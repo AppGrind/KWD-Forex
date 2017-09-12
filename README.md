@@ -1,1 +1,1 @@
-# KWS-Forex
+# KWD-Forex
