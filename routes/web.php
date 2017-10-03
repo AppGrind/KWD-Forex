@@ -12,5 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+//Get in Touch form  routes
+Route::post('/get-in-touch', ['as' => 'get-in-touch', 'uses' => 'HomeController@get_in_touch']);
