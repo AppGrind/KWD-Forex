@@ -42,8 +42,8 @@
     <ul>
         <li><a href="#Home" ><span class="icons flaticon-house3"></span>Home</a>
         </li>
-        <li><a href="#About" ><span class="icons flaticon-cursor7"></span>About</a>
-        </li>
+        {{--<li><a href="#About" ><span class="icons flaticon-cursor7"></span>About</a>--}}
+        {{--</li>--}}
         <li><a href="#Training" ><span class="icons flaticon-drawer1"></span>Training</a>
         </li>
         <li><a href="#Students" ><span class="icons flaticon-comment2"></span>Students</a>
@@ -79,12 +79,11 @@
     <!-- RIGHT HAND & PHONE MOCK-UP IMAGES -->
     <div class="wrap">
         <div class="section-image">
-            <!-- Home IMAGE --><img src="{{ url('images/background/students_thumb.png') }}" alt="Home">
-            <!-- About IMAGE --><img src="{{ url('images/background/about_thumb.png') }}" alt="About">
+            <!-- Home IMAGE --><img src="{{ url('images/background/home_thumb.png') }}" alt="Home">
             <!-- Training IMAGE --><img src="{{ url('images/background/training_thumb.png') }}" alt="Training">
             <!-- Students IMAGE --><img src="{{ url('images/background/students_thumb.png') }}" alt="Students">
             <!-- Pricing IMAGE --><img src="{{ url('images/background/pricing_thumb.png') }}" alt="Pricing">
-            <!-- Contact IMAGE --><img src="{{ url('images/background/about_thumb.png') }}" alt="Contact">
+            <!-- Contact IMAGE --><img src="{{ url('images/background/contact_thumb.png') }}" alt="Contact">
         </div>
         <div id="hand"></div>
     </div>
@@ -105,76 +104,76 @@
     <!-- END SECTION HOME -->
 
     <!-- SECTION ABOUT -->
-    <div class="section" data-anchor="About" id="section1">
-        <div class="wrap">
-            <div class="box">
-                <!-- SECTION ABOUT CONTENT -->
-                <h2>About <strong>KWD</strong> Forex</h2>
-                <div class="tabs tabs-style-linemove">
-                    <!-- TABS LINKS -->
-                    <nav>
-                        <ul>
-                            <li><a href="#section-linemove-1"><span class="icon flaticon-lightbulb"></span><span> Design</span></a>
-                            </li>
-                            <li><a href="#section-linemove-2"><span class="icon flaticon-adjust3"></span><span> Training</span></a>
-                            </li>
-                            <li><a href="#section-linemove-3"><span class="icon flaticon-drawer1"></span><span> Demos</span></a>
-                            </li>
-                            <li><a href="#section-linemove-4"><span class="icon flaticon-laptop3"></span><span> Elements</span></a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <!-- END TABS LINKS -->
+    {{--<div class="section" data-anchor="About" id="section1">--}}
+        {{--<div class="wrap">--}}
+            {{--<div class="box">--}}
+                {{--<!-- SECTION ABOUT CONTENT -->--}}
+                {{--<h2>About <strong>KWD</strong> Forex</h2>--}}
+                {{--<div class="tabs tabs-style-linemove">--}}
+                    {{--<!-- TABS LINKS -->--}}
+                    {{--<nav>--}}
+                        {{--<ul>--}}
+                            {{--<li><a href="#section-linemove-1"><span class="icon flaticon-lightbulb"></span><span> Design</span></a>--}}
+                            {{--</li>--}}
+                            {{--<li><a href="#section-linemove-2"><span class="icon flaticon-adjust3"></span><span> Training</span></a>--}}
+                            {{--</li>--}}
+                            {{--<li><a href="#section-linemove-3"><span class="icon flaticon-drawer1"></span><span> Demos</span></a>--}}
+                            {{--</li>--}}
+                            {{--<li><a href="#section-linemove-4"><span class="icon flaticon-laptop3"></span><span> Elements</span></a>--}}
+                            {{--</li>--}}
+                        {{--</ul>--}}
+                    {{--</nav>--}}
+                    {{--<!-- END TABS LINKS -->--}}
 
-                    <!-- TABS CONTENT -->
-                    <div class="content-wrap">
+                    {{--<!-- TABS CONTENT -->--}}
+                    {{--<div class="content-wrap">--}}
 
-                        <!-- TAB 1 -->
-                        <section id="section-linemove-1">
-                            <h4><span class="icon flaticon-lightbulb"></span> Good design doesn't date!</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora similique excepturi obcaecati, maiores nostrum esse illo in soluta at saepe perspiciatis eos quasi laudantium sunt ad quaerat ipsum dolor sit amet, consectetur adipisicing elit?</p>
-                        </section>
+                        {{--<!-- TAB 1 -->--}}
+                        {{--<section id="section-linemove-1">--}}
+                            {{--<h4><span class="icon flaticon-lightbulb"></span> Good design doesn't date!</h4>--}}
+                            {{--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora similique excepturi obcaecati, maiores nostrum esse illo in soluta at saepe perspiciatis eos quasi laudantium sunt ad quaerat ipsum dolor sit amet, consectetur adipisicing elit?</p>--}}
+                        {{--</section>--}}
 
-                        <!-- TAB 2 -->
-                        <section id="section-linemove-2">
-                            <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora similique excepturi obcaecati, aiores nostrum esse illo in soluta.</h4>
-                            <ul class="features">
-                                <li><a class="tooltip" href="#"><span class="icon flaticon-desktop1"></span> Unique Design</a> </li>
-                                <li><a class="tooltip" href="#"><span class="icon flaticon-small62"></span> Well Documented</a> </li>
-                            </ul>
-                            <ul class="features">
-                                <li><a class="tooltip" href="#"><span class="icon flaticon-outlined3"></span> Multiple Demos</a> </li>
-                                <li><a class="tooltip" href="#"><span class="icon flaticon-lightbulb"></span> Amazing Training</a> </li>
-                            </ul>
-                        </section>
+                        {{--<!-- TAB 2 -->--}}
+                        {{--<section id="section-linemove-2">--}}
+                            {{--<h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora similique excepturi obcaecati, aiores nostrum esse illo in soluta.</h4>--}}
+                            {{--<ul class="features">--}}
+                                {{--<li><a class="tooltip" href="#"><span class="icon flaticon-desktop1"></span> Unique Design</a> </li>--}}
+                                {{--<li><a class="tooltip" href="#"><span class="icon flaticon-small62"></span> Well Documented</a> </li>--}}
+                            {{--</ul>--}}
+                            {{--<ul class="features">--}}
+                                {{--<li><a class="tooltip" href="#"><span class="icon flaticon-outlined3"></span> Multiple Demos</a> </li>--}}
+                                {{--<li><a class="tooltip" href="#"><span class="icon flaticon-lightbulb"></span> Amazing Training</a> </li>--}}
+                            {{--</ul>--}}
+                        {{--</section>--}}
 
-                        <!-- TAB 3 -->
-                        <section id="section-linemove-3">
-                            <h4><span class="icon flaticon-drawer1"></span> Check out Appsperia's multiple demos!</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora similique excepturi obcaecati, maiores nostrum esse illo in soluta at saepe perspiciatis eos quasi laudantium sunt ad quaerat ipsum dolor sit amet, consectetur adipisicing elit?</p>
-                        </section>
+                        {{--<!-- TAB 3 -->--}}
+                        {{--<section id="section-linemove-3">--}}
+                            {{--<h4><span class="icon flaticon-drawer1"></span> Check out Appsperia's multiple demos!</h4>--}}
+                            {{--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora similique excepturi obcaecati, maiores nostrum esse illo in soluta at saepe perspiciatis eos quasi laudantium sunt ad quaerat ipsum dolor sit amet, consectetur adipisicing elit?</p>--}}
+                        {{--</section>--}}
 
-                        <!-- TAB 4 -->
-                        <section id="section-linemove-4">
-                            <p>
-                            <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora similique excepturi obcaecati, aiores nostrum esse illo in soluta.</h4>
-                            <ul class="features">
-                                <li><a class="tooltip" href="#"><span class="icon flaticon-desktop1"></span> Content Boxes</a> </li>
-                                <li><a class="tooltip" href="#"><span class="icon flaticon-small62"></span> Extended Tabs</a> </li>
-                            </ul>
-                            <ul class="features">
-                                <li><a class="tooltip" href="#"><span class="icon flaticon-outlined3"></span> Carousels & Sliders</a> </li>
-                                <li><a class="tooltip" href="#"><span class="icon flaticon-lightbulb"></span> Contact Form</a> </li>
-                            </ul>
-                        </section>
-                    </div>
-                    <!-- END TABS CONTENT -->
+                        {{--<!-- TAB 4 -->--}}
+                        {{--<section id="section-linemove-4">--}}
+                            {{--<p>--}}
+                            {{--<h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora similique excepturi obcaecati, aiores nostrum esse illo in soluta.</h4>--}}
+                            {{--<ul class="features">--}}
+                                {{--<li><a class="tooltip" href="#"><span class="icon flaticon-desktop1"></span> Content Boxes</a> </li>--}}
+                                {{--<li><a class="tooltip" href="#"><span class="icon flaticon-small62"></span> Extended Tabs</a> </li>--}}
+                            {{--</ul>--}}
+                            {{--<ul class="features">--}}
+                                {{--<li><a class="tooltip" href="#"><span class="icon flaticon-outlined3"></span> Carousels & Sliders</a> </li>--}}
+                                {{--<li><a class="tooltip" href="#"><span class="icon flaticon-lightbulb"></span> Contact Form</a> </li>--}}
+                            {{--</ul>--}}
+                        {{--</section>--}}
+                    {{--</div>--}}
+                    {{--<!-- END TABS CONTENT -->--}}
 
-                    <!-- END SECTION ABOUT -->
-                </div>
-            </div>
-        </div>
-    </div>
+                    {{--<!-- END SECTION ABOUT -->--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
     <!-- END SECTION ABOUT -->
 
     <!-- SECTION TRAINING -->
@@ -183,17 +182,25 @@
             <div class="box">
                 <!-- SECTION TRAINING CONTENT -->
                 <h2><strong>Amazing</strong> Training</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora similique excepturi obcaecati, maiores nostrum esse illo in soluta at saepe perspiciatis eos quasi laudantium sunt ad quaerat?</p>
+                <p>At KWD Forex we offer beginners and advanced forex trading knowledge. We equip our mentees with the necessary education and tools to tackle the financial markets. Our mentors hold Sunday analysis sessions with students to share setups and possible moves for the coming week until the student is confident enough to trade on their own even so, the mentors are always there to assist the student should they have any queries.</p>
+                <p><strong>3 Lessons consisting of the following:</strong></p>
                 <ul class="features">
-                    <li><a class="tooltip" href="#"><span class="icon flaticon-desktop1"></span> Clean Design<span class="tooltip-content"><span class="tooltip-text"><span class="tooltip-inner"><span class="icon flaticon-desktop1"></span>Lorem ipsum dolor sit amet, consectetur adipisicing elitr eiciendis autem aperiam.</span></span></span></a> </li>
-                    <li><a class="tooltip" href="#"><span class="icon flaticon-small62"></span> Dedicated Support<span class="tooltip-content"><span class="tooltip-text"><span class="tooltip-inner"><span class="icon flaticon-small62"></span>Lorem ipsum dolor sit amet, consectetur adipisicing elitr eiciendis autem aperiam.</span></span></span></a> </li>
-                    <li><a class="tooltip" href="#"><span class="icon flaticon-adjust3"></span> Very customizable<span class="tooltip-content"><span class="tooltip-text"><span class="tooltip-inner"><span class="icon flaticon-adjust3"></span>Lorem ipsum dolor sit amet, consectetur adipisicing elitr eiciendis autem aperiam.</span></span></span></a> </li>
+                    <li><span class="icon flaticon-target"></span> Introduction to forex</li>
+                    <li><span class="icon flaticon-question3"></span> What is forex</li>
+                    <li><span class="icon flaticon-arrow100"></span> How to trade forex</li>
                 </ul>
                 <ul class="features">
-                    <li><a class="tooltip" href="#"><span class="icon flaticon-interface19"></span> Well Documented<span class="tooltip-content"><span class="tooltip-text"><span class="tooltip-inner"><span class="icon flaticon-interface19"></span>Lorem ipsum dolor sit amet, consectetur adipisicing elitr eiciendis autem aperiam.</span></span></span></a> </li>
-                    <li><a class="tooltip" href="#"><span class="icon flaticon-outlined3"></span> Multiple Demos<span class="tooltip-content"><span class="tooltip-text"><span class="tooltip-inner"><span class="icon flaticon-outlined3"></span>Lorem ipsum dolor sit amet, consectetur adipisicing elitr eiciendis autem aperiam.</span></span></span></a> </li>
-                    <li><a class="tooltip" href="#"><span class="icon flaticon-lightbulb"></span> Amazing Training<span class="tooltip-content"><span class="tooltip-text"><span class="tooltip-inner"><span class="icon flaticon-lightbulb"></span>Lorem ipsum dolor sit amet, consectetur adipisicing elitr eiciendis autem aperiam.</span></span></span></a> </li>
+                    <li><span class="icon flaticon-genius"></span> Understanding Price action</li>
+                    <li><span class="icon flaticon-wheel1"></span> Preparing setups</li>
+                    <li><span class="icon flaticon-lock11"></span> Risk management</li>
                 </ul>
+                <p style="clear:both"><br>We aslo give you:</p>
+
+                <ul class="features">
+                    <li><span class="icon flaticon-check2"></span> Lifetime Mentorship</li>
+                    <li><span class="icon flaticon-check2"></span> Weekly Analysis Shared</li>
+                </ul>
+
                 <!-- END SECTION TRAINING CONTENT -->
             </div>
         </div>
@@ -210,27 +217,28 @@
 
                     <!-- STUDENTS FEEDBACK 1 -->
                     <div class="slide" data-anchor="slide1">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero dolores omnis illum, voluptates fugiat incidunt, consectetur aspernatur rerum. Consequatur obcaecati, facere iusto alias nostrum officiis modi eum perspiciatis.</p>
-                        <p> <span class="client-name"> <strong> Mark Williams</strong> - Developer</span> <span class="client-stars">
-                        <span class="icon flaticon-little27"></span> <span class="icon flaticon-little27"></span> <span class="icon flaticon-half3"></span> <span class="icon flaticon-fivepointed"></span> <span class="icon flaticon-fivepointed"></span> </span>
+                        <p>Thanks bro, for the training my trading has improved and mentorships are life. <br> Keep up the good work.</p>
+                        <p> <span class="client-name"> <strong> Smiso</strong></span> <span class="client-stars">
+                        <span class="icon flaticon-little27"></span>
+                                <span class="icon flaticon-little27"></span> <span class="icon flaticon-little27"></span> <span class="icon flaticon-little27"></span> <span class="icon flaticon-fivepointed"></span> </span>
                         </p>
                     </div>
 
-                    <!-- STUDENTS FEEDBACK 2 -->
-                    <div class="slide" data-anchor="slide2">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero dolores omnis illum, voluptates fugiat incidunt, consectetur aspernatur rerum. Consequatur obcaecati, facere iusto alias nostrum officiis modi eum perspiciatis.</p>
-                        <p> <span class="client-name"> <strong> Andreas Bosch</strong> - CEO</span> <span class="client-stars">
-                        <span class="icon flaticon-little27"></span> <span class="icon flaticon-little27"></span> <span class="icon flaticon-little27"></span> <span class="icon flaticon-little27"></span> <span class="icon flaticon-fivepointed"></span> </span>
-                        </p>
-                    </div>
+                    {{--<!-- STUDENTS FEEDBACK 2 -->--}}
+                    {{--<div class="slide" data-anchor="slide2">--}}
+                        {{--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero dolores omnis illum, voluptates fugiat incidunt, consectetur aspernatur rerum. Consequatur obcaecati, facere iusto alias nostrum officiis modi eum perspiciatis.</p>--}}
+                        {{--<p> <span class="client-name"> <strong> Andreas Bosch</strong> - CEO</span> <span class="client-stars">--}}
+                        {{--<span class="icon flaticon-little27"></span> <span class="icon flaticon-little27"></span> <span class="icon flaticon-little27"></span> <span class="icon flaticon-little27"></span> <span class="icon flaticon-fivepointed"></span> </span>--}}
+                        {{--</p>--}}
+                    {{--</div>--}}
 
-                    <!-- STUDENTS FEEDBACK 3 -->
-                    <div class="slide" data-anchor="slide3">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero dolores omnis illum, voluptates fugiat incidunt, consectetur aspernatur rerum. Consequatur obcaecati, facere iusto alias nostrum officiis modi eum perspiciatis.</p>
-                        <p> <span class="client-name"> <strong> Michael Speria</strong> - Manager</span> <span class="client-stars">
-                        <span class="icon flaticon-little27"></span> <span class="icon flaticon-little27"></span> <span class="icon flaticon-little27"></span> <span class="icon flaticon-fivepointed"></span> <span class="icon flaticon-fivepointed"></span> </span>
-                        </p>
-                    </div>
+                    {{--<!-- STUDENTS FEEDBACK 3 -->--}}
+                    {{--<div class="slide" data-anchor="slide3">--}}
+                        {{--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero dolores omnis illum, voluptates fugiat incidunt, consectetur aspernatur rerum. Consequatur obcaecati, facere iusto alias nostrum officiis modi eum perspiciatis.</p>--}}
+                        {{--<p> <span class="client-name"> <strong> Michael Speria</strong> - Manager</span> <span class="client-stars">--}}
+                        {{--<span class="icon flaticon-little27"></span> <span class="icon flaticon-little27"></span> <span class="icon flaticon-little27"></span> <span class="icon flaticon-fivepointed"></span> <span class="icon flaticon-fivepointed"></span> </span>--}}
+                        {{--</p>--}}
+                    {{--</div>--}}
                     <!-- END SECTION STUDENTS -->
                 </div>
             </div>
@@ -286,6 +294,7 @@
                 <h2><strong>Get</strong> in touch</h2>
                 <ul class="features">
                     <li><a class="tooltip" href="#"><span class="icon flaticon-telephone1"></span> Call Us now<span class="tooltip-content"><span class="tooltip-text"><span class="tooltip-inner"><span class="icon flaticon-telephone1"></span>+27 083 229-3912 <br>+27 81 780-1797 <br>+27 76 215-1365 </span></span></span></a> </li>
+                    <li><a class="tooltip" href="#"><span class="icon flaticon-mail9"></span> Send Email<span class="tooltip-content"><span class="tooltip-text"><span class="tooltip-inner"><span class="icon flaticon-mail9"></span> <br>info@kwdforex.com</span></span></span></a> </li>
 
                 </ul>
                 <ul class="features">
@@ -296,7 +305,6 @@
                             </span>
                             </span>
                     </li>
-                    <li><a class="tooltip" href="#"><span class="icon flaticon-mail9"></span> Send Email<span class="tooltip-content"><span class="tooltip-text"><span class="tooltip-inner"><span class="icon flaticon-mail9"></span> <br>info@kwdforex.com</span></span></span></a> </li>
                 </ul>
 
                 <!-- SECTION CONTACT FORM-->
@@ -418,12 +426,9 @@
 <div class="wrap">
     <div id="social-icons">
         <ul>
-            <li><a href=""><i class="flaticon-facebook6"></i></a> </li>
-            <li><a href=""><i class="flaticon-social19"></i></a> </li>
-            <li><a href=""><i class="flaticon-google16"></i></a> </li>
-            <li><a href=""><i class="flaticon-social40"></i></a> </li>
-            <li><a href=""><i class="flaticon-social7"></i></a> </li>
-            <li><a href=""><i class="flaticon-logo3"></i></a> </li>
+            <li><a href="https://www.facebook.com/kwdforex"><i class="flaticon-facebook6"></i></a> </li>
+            <li><a href="https://www.twitter.com/kwdforex"><i class="flaticon-social77"></i></a> </li>
+            <li><a href="https://www.instagram.com/kwdforex"><i class="flaticon-social19"></i></a> </li>
         </ul>
     </div>
 </div>

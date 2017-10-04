@@ -783,14 +783,14 @@ SECTIONS
 
 .screenshots-wrapper, .section-image {
     position: fixed;
-    left: 50%;
+    left: 59.2%;
     top: 50%;
     overflow: hidden;
     z-index: 1;
     margin-top: -190px;
     width: 515px;
-    height: 290px;
-    margin-left: 178px;
+    height: 289px;
+    /* margin-left: 11rem; */
     border-radius: 1px;
 }
 .screenshots-wrapper img,

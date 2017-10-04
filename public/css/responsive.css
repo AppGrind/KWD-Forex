@@ -46,11 +46,14 @@
         margin-left: inherit;
     }
 
-    .screenshots-wrapper,
-.section-image {
+    .screenshots-wrapper, .section-image {
         left: auto;
-        right: 89px;
+        right: 2.5%;
         margin-left: inherit;
+    }
+    .fp-tableCell{
+        position: relative;
+        z-index: 1;
     }
 }
 
