@@ -456,7 +456,7 @@ function openSidr(){
     $.sidr('open', 'sidr', '');
 }
 function closeSidr(){
-//    $.sidr('close', 'sidr', '');
+    $.sidr('close', 'sidr', '');
 }
 </script>
 
