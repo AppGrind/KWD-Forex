@@ -29,7 +29,7 @@
 <body>
 
 <!-- PRELOADER -->
-<div id="preloader"><img src="{{ url('/images/logo/KWD-FOREX-LOGO.svg') }}" alt=""></div>
+<div id="preloader"><div class="preloader"><img src="{{ url('/images/logo/KWD-FOREX-LOGO.svg') }}" alt=""><p>Rise Above the Horizon</p></div></div>
 
 <!-- MAIN NAV -->
 <a id="main-nav" href="#sidr"><span class="flaticon-menu9"></span></a>
@@ -62,11 +62,11 @@
 <!-- END MAIN NAV -->
 
 <!-- PAGE LOGO -->
-<div class="wrap">
-    <div id="logo">
-        <a href="#"></a>
-    </div>
-</div>
+{{--<div class="wrap">--}}
+    {{--<div id="logo">--}}
+        {{--<a href="#"></a>--}}
+    {{--</div>--}}
+{{--</div>--}}
 <!-- END PAGE LOGO -->
 
 <!-- LANDING PAGE CONTENT -->
@@ -79,7 +79,7 @@
     <!-- RIGHT HAND & PHONE MOCK-UP IMAGES -->
     <div class="wrap">
         <div class="section-image">
-            <!-- Home IMAGE --><img src="{{ url('images/background/home_thumb.png') }}" alt="Home">
+            <!-- Home IMAGE --><img src="{{ url('images/background/home_thumb.jpg') }}" alt="Home">
             <!-- Training IMAGE --><img src="{{ url('images/background/training_thumb.png') }}" alt="Training">
             <!-- Students IMAGE --><img src="{{ url('images/background/students_thumb.png') }}" alt="Students">
             <!-- Pricing IMAGE --><img src="{{ url('images/background/pricing_thumb.png') }}" alt="Pricing">
@@ -426,9 +426,9 @@
 <div class="wrap">
     <div id="social-icons">
         <ul>
-            <li><a href="https://www.facebook.com/kwdforex"><i class="flaticon-facebook6"></i></a> </li>
-            <li><a href="https://www.twitter.com/kwdforex"><i class="flaticon-social77"></i></a> </li>
-            <li><a href="https://www.instagram.com/kwdforex"><i class="flaticon-social19"></i></a> </li>
+            <li><a href="https://www.facebook.com/kwdforex" target="_blank"><i class="flaticon-facebook6"></i></a> </li>
+            <li><a href="https://www.twitter.com/kwdforex"  target="_blank"><i class="flaticon-social77"></i></a> </li>
+            <li><a href="https://www.instagram.com/kwdforex" target="_blank"><i class="flaticon-social19"></i></a> </li>
         </ul>
     </div>
 </div>
@@ -449,8 +449,8 @@ $(document).ready(function(){
         side: 'left',
         speed: 450
     });
-    setTimeout(openSidr, 900);
-    setTimeout(closeSidr, 1600);
+    setTimeout(openSidr, 1550);
+    setTimeout(closeSidr, 2100);
 });
 function openSidr(){
     $.sidr('open', 'sidr', '');

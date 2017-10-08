@@ -19,8 +19,6 @@ $(document).ready(function () {
     });
      $('.screenshots-content, .students-content').css('height', $(window).height());
 
-    // CONTACT FORM
-
     $(document).mouseup(function (e) {
         if ($(".sidr-open ")) {
             var container = $("#sidr");
@@ -29,22 +27,21 @@ $(document).ready(function () {
                 && container.has(e.target).length === 0) // ... nor a descendant of the container
             {
                 $(".sidr-open #main-nav").click();
+                $.sidr('close','');
+
             }
         }
+
     });
 
+    $(document).on('click', function(){
 
-    // $('#submit').click(function () {
-    //
-    //     $.post("/get-in-touch", $("#contact-form").serialize(), function (response) {
-    //         $('#success').fadeIn().html(response);
-    //         $('#success').delay(2000).fadeOut();
-    //     });
-    //     return false;
-    //
-    // });
+            console.log('log this');
+        if ($(".sidr-open ")) {
+            console.log('When Open')
+        }
 
-
+    });
 });
 
 jQuery(window).load(function () {
