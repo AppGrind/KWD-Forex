@@ -97,7 +97,10 @@
             <div class="box">
                 <!-- SECTION HOME CONTENT -->
                 <h1><strong>KWD</strong> Forex</h1>
-                <p>KWD Forex group offers beginners and advanced financial markets techniques. We mainly focus on swing trading which is the most effective and sustainable way of trading the currency market and also do intraday. KWDForex mentors will engage with clients every Sunday to share the upcoming weeks analysis and our mentors trade in line with the students to instill self belief.</p></div>
+                <p>KWD Forex group offers beginners and advanced financial markets techniques. We mainly focus on swing trading which is the most effective and sustainable way of trading the currency market and also do intraday. KWDForex mentors will engage with clients every Sunday to share the upcoming weeks analysis and our mentors trade in line with the students to instill self belief.</p>
+                <p><br><a href="#Contact" class="button">Contact us Today!</a></p>
+            </div>
+            
             <!-- END SECTION HOME CONTENT -->
         </div>
     </div>
@@ -299,7 +302,7 @@
                 </ul>
                 <ul class="features">
                     <li><span class="tooltip"><span class="icon flaticon-cursor7"></span>Official Website <span class="tooltip-content"><span class="tooltip-text"><span class="tooltip-inner"><span class="icon flaticon-cursor7"></span>
-                            <br> <a href="http://themeforest.net" target="_blank">www.kwdforex.com</a>
+                            <br> <a href="http://www.kwdforex.com" target="_blank">www.kwdforex.com</a>
                             </span>
                             </span>
                             </span>
@@ -427,8 +430,8 @@
     <div id="social-icons">
         <ul>
             <li><a href="https://www.facebook.com/kwdforex" target="_blank"><i class="flaticon-facebook6"></i></a> </li>
-            <li><a href="https://www.twitter.com/kwdforex"  target="_blank"><i class="flaticon-social77"></i></a> </li>
-            <li><a href="https://www.instagram.com/kwdforex" target="_blank"><i class="flaticon-social19"></i></a> </li>
+            <li><a href="https://www.instagram.com/kwdforex"  target="_blank"><i class="flaticon-social77"></i></a> </li>
+            <li><a href="https://www.twitter.com/kwdforex" target="_blank"><i class="flaticon-social19"></i></a> </li>
         </ul>
     </div>
 </div>

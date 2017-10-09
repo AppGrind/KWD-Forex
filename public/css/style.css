@@ -972,7 +972,7 @@ textarea {
     margin-bottom: 0;
 }
 
-button {
+button, .button {
 font-weight: 700;
 border-radius: 4px;
 color: #ffffff;
@@ -991,7 +991,7 @@ margin-bottom: 10px;
 transition: 0.3s;
 background: #BC8F61;}
 
-button:hover {
+button:hover, .button:hover {
     background: #fff;
     color: #111;
 }

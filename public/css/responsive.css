@@ -277,7 +277,9 @@
     .pricing-button {
         padding: 15px 0;
     }
-
+    .price>span.offer {
+        top: -7px;
+    }
     .specifications .icon {
         display: none;
     }

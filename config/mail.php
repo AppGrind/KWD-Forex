@@ -57,7 +57,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'noreply@kwdforex.com'),
-        'name' => env('MAIL_FROM_NAME', 'KWDForex No Re:bot'),
+        'name' => env('MAIL_FROM_NAME', 'KWDForex-noreply'),
     ],
 
     /*
