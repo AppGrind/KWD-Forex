@@ -296,7 +296,7 @@
                 <!-- SECTION CONTACT CONTENT-->
                 <h2><strong>Get</strong> in touch</h2>
                 <ul class="features">
-                    <li><a class="tooltip" href="#"><span class="icon flaticon-telephone1"></span> Call Us now<span class="tooltip-content"><span class="tooltip-text"><span class="tooltip-inner"><span class="icon flaticon-telephone1"></span>+27 083 229-3912 <br>+27 81 780-1797 <br>+27 76 215-1365 </span></span></span></a> </li>
+                    <li><a class="tooltip" href="#"><span class="icon flaticon-telephone1"></span> Call Us now<span class="tooltip-content"><span class="tooltip-text"><span class="tooltip-inner"><span class="icon flaticon-telephone1"></span>+27 83 229-3912 <br>+27 81 780-1797 <br>+27 76 215-1365 </span></span></span></a> </li>
                     <li><a class="tooltip" href="#"><span class="icon flaticon-mail9"></span> Send Email<span class="tooltip-content"><span class="tooltip-text"><span class="tooltip-inner"><span class="icon flaticon-mail9"></span> <br>info@kwdforex.com</span></span></span></a> </li>
 
                 </ul>
