@@ -14,7 +14,7 @@ $(document).ready(function () {
         'slidesNavPosition': 'bottom',
         'easingcss3': 'ease',
         'navigation': true,
-        'anchors': ['Home', 'Training', 'Students', 'Pricing', 'Contact'], // ,'About', 'Register', 'Login'
+        'anchors': ['Home', 'About' , 'Training', 'Students', 'Pricing', 'Contact'], // ,'About', 'Register', 'Login'
         'navigationPosition': 'left',
     });
      $('.screenshots-content, .students-content').css('height', $(window).height());

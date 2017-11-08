@@ -42,8 +42,8 @@
     <ul>
         <li><a href="#Home" ><span class="icons flaticon-house3"></span>Home</a>
         </li>
-        {{--<li><a href="#About" ><span class="icons flaticon-cursor7"></span>About</a>--}}
-        {{--</li>--}}
+        <li><a href="#About" ><span class="icons flaticon-cursor7"></span>About us</a>
+        </li>
         <li><a href="#Training" ><span class="icons flaticon-drawer1"></span>Training</a>
         </li>
         <li><a href="#Students" ><span class="icons flaticon-comment2"></span>Students</a>
@@ -80,6 +80,7 @@
     <div class="wrap">
         <div class="section-image">
             <!-- Home IMAGE --><img src="{{ url('images/background/home_thumb.jpg') }}" alt="Home">
+            <!-- about IMAGE --><img src="{{ url('images/background/about-bg.jpg') }}" alt="About us">
             <!-- Training IMAGE --><img src="{{ url('images/background/training_thumb.png') }}" alt="Training">
             <!-- Students IMAGE --><img src="{{ url('images/background/students_thumb.png') }}" alt="Students">
             <!-- Pricing IMAGE --><img src="{{ url('images/background/pricing_thumb.png') }}" alt="Pricing">
@@ -107,76 +108,25 @@
     <!-- END SECTION HOME -->
 
     <!-- SECTION ABOUT -->
-    {{--<div class="section" data-anchor="About" id="section1">--}}
-        {{--<div class="wrap">--}}
-            {{--<div class="box">--}}
-                {{--<!-- SECTION ABOUT CONTENT -->--}}
-                {{--<h2>About <strong>KWD</strong> Forex</h2>--}}
-                {{--<div class="tabs tabs-style-linemove">--}}
-                    {{--<!-- TABS LINKS -->--}}
-                    {{--<nav>--}}
-                        {{--<ul>--}}
-                            {{--<li><a href="#section-linemove-1"><span class="icon flaticon-lightbulb"></span><span> Design</span></a>--}}
-                            {{--</li>--}}
-                            {{--<li><a href="#section-linemove-2"><span class="icon flaticon-adjust3"></span><span> Training</span></a>--}}
-                            {{--</li>--}}
-                            {{--<li><a href="#section-linemove-3"><span class="icon flaticon-drawer1"></span><span> Demos</span></a>--}}
-                            {{--</li>--}}
-                            {{--<li><a href="#section-linemove-4"><span class="icon flaticon-laptop3"></span><span> Elements</span></a>--}}
-                            {{--</li>--}}
-                        {{--</ul>--}}
-                    {{--</nav>--}}
-                    {{--<!-- END TABS LINKS -->--}}
+    <div class="section" data-anchor="About" id="section1">
+        <div class="wrap">
+            <div class="box">
+                <!-- SECTION ABOUT CONTENT -->
+                <h2>About us</h2>
 
-                    {{--<!-- TABS CONTENT -->--}}
-                    {{--<div class="content-wrap">--}}
+                    <!-- TABS CONTENT -->
+                    <div class="content-wrap">
+                        <p>Sandile Ndimande is a 26-year-old skilled technical trader at KWDForex. Born and raised in Durban, he completed his undergraduate diploma at Durban University of Technology in Information Technology (2013). He furthered his studies and completed his Bachelors Degree in Information Technology (2014) there after he went to the University of Kwa-Zulu Natal to honor his Honours Degree in Information Systems (2015).
+                            While still studying, Sandile started his working career at eThekwini Municipality (2013) as an Applications Engineer. He left eThekwini Municipality after a solid two successful years and joined a corporate giant Derivco as a Lead Quality Analyst (2016). He is ISTQB (UK Standard) Certified, Agile Certified as well as IIST (US Standard) Certified.
+                            <br><br>He had discovered the forex market in 2014 but took time to learn and after months of studying and nurturing the skill of trading the forex market, he then implemented and tested. He began trading his self taught abilities in 2015 to which he has been consistently profitable. He there after began teaching friends and colleagues on how to trade forex profitably.
+                            In 2017 Sandile started a forex institution called KWDForex with his team. This organizations objective is to educate and mentor individuals with their technical skills and strategies on how to make profits consistently by trading the financial markets. </p>
+                        <!-- TAB 1 -->
 
-                        {{--<!-- TAB 1 -->--}}
-                        {{--<section id="section-linemove-1">--}}
-                            {{--<h4><span class="icon flaticon-lightbulb"></span> Good design doesn't date!</h4>--}}
-                            {{--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora similique excepturi obcaecati, maiores nostrum esse illo in soluta at saepe perspiciatis eos quasi laudantium sunt ad quaerat ipsum dolor sit amet, consectetur adipisicing elit?</p>--}}
-                        {{--</section>--}}
-
-                        {{--<!-- TAB 2 -->--}}
-                        {{--<section id="section-linemove-2">--}}
-                            {{--<h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora similique excepturi obcaecati, aiores nostrum esse illo in soluta.</h4>--}}
-                            {{--<ul class="features">--}}
-                                {{--<li><a class="tooltip" href="#"><span class="icon flaticon-desktop1"></span> Unique Design</a> </li>--}}
-                                {{--<li><a class="tooltip" href="#"><span class="icon flaticon-small62"></span> Well Documented</a> </li>--}}
-                            {{--</ul>--}}
-                            {{--<ul class="features">--}}
-                                {{--<li><a class="tooltip" href="#"><span class="icon flaticon-outlined3"></span> Multiple Demos</a> </li>--}}
-                                {{--<li><a class="tooltip" href="#"><span class="icon flaticon-lightbulb"></span> Amazing Training</a> </li>--}}
-                            {{--</ul>--}}
-                        {{--</section>--}}
-
-                        {{--<!-- TAB 3 -->--}}
-                        {{--<section id="section-linemove-3">--}}
-                            {{--<h4><span class="icon flaticon-drawer1"></span> Check out Appsperia's multiple demos!</h4>--}}
-                            {{--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora similique excepturi obcaecati, maiores nostrum esse illo in soluta at saepe perspiciatis eos quasi laudantium sunt ad quaerat ipsum dolor sit amet, consectetur adipisicing elit?</p>--}}
-                        {{--</section>--}}
-
-                        {{--<!-- TAB 4 -->--}}
-                        {{--<section id="section-linemove-4">--}}
-                            {{--<p>--}}
-                            {{--<h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora similique excepturi obcaecati, aiores nostrum esse illo in soluta.</h4>--}}
-                            {{--<ul class="features">--}}
-                                {{--<li><a class="tooltip" href="#"><span class="icon flaticon-desktop1"></span> Content Boxes</a> </li>--}}
-                                {{--<li><a class="tooltip" href="#"><span class="icon flaticon-small62"></span> Extended Tabs</a> </li>--}}
-                            {{--</ul>--}}
-                            {{--<ul class="features">--}}
-                                {{--<li><a class="tooltip" href="#"><span class="icon flaticon-outlined3"></span> Carousels & Sliders</a> </li>--}}
-                                {{--<li><a class="tooltip" href="#"><span class="icon flaticon-lightbulb"></span> Contact Form</a> </li>--}}
-                            {{--</ul>--}}
-                        {{--</section>--}}
-                    {{--</div>--}}
-                    {{--<!-- END TABS CONTENT -->--}}
-
-                    {{--<!-- END SECTION ABOUT -->--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
+                    </div>
+                    <!-- END TABS CONTENT -->
+            </div>
+        </div>
+    </div>
     <!-- END SECTION ABOUT -->
 
     <!-- SECTION TRAINING -->
