@@ -245,7 +245,7 @@
     }
 
     .fp-slidesNav {
-        display: none;
+        display: block;
     }
 
     #social-icons a i {
