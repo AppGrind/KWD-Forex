@@ -33,15 +33,6 @@ $(document).ready(function () {
         }
 
     });
-
-    $(document).on('click', function(){
-
-            console.log('log this');
-        if ($(".sidr-open ")) {
-            console.log('When Open')
-        }
-
-    });
 });
 
 jQuery(window).load(function () {

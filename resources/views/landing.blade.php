@@ -498,6 +498,7 @@
 {!! Html::script('/js/jquery.fullPage.js') !!}
 {!! Html::script('/js/cbpFWTabs.js') !!}
 {!! Html::script('/js/jquery.sidr.min.js') !!}
+{!! Html::script('/js/jquery.slimscroll.min.js') !!}
 {!! Html::script('/js/scripts.js') !!}
 {!! Html::script('//cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js') !!}
 <!--<script type="text/javascript" src="js/video.js"></script> -->
@@ -510,6 +511,11 @@ $(document).ready(function(){
     });
     setTimeout(openSidr, 1550);
     setTimeout(closeSidr, 2100);
+});
+$(function(){
+    $('.modal-body').slimScroll({
+        height: '250px'
+    });
 });
 function openSidr(){
     $.sidr('open', 'sidr', '');
