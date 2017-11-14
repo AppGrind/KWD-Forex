@@ -514,7 +514,9 @@ $(document).ready(function(){
 });
 $(function(){
     $('.modal-body').slimScroll({
-        height: '250px'
+        height: '300px',
+        alwaysVisible: true,
+        allowPageScroll: false
     });
 });
 function openSidr(){
