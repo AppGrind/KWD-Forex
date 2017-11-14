@@ -1155,3 +1155,6 @@ div#section1 .box{
     background-color: #BC8F61;
     color: white;
 }
+
+.blocker {
+    z-index: 9999;}
