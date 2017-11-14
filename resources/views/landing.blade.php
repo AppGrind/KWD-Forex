@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
     {{--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">--}}
     <!-- STYLESHEETS -->
+    {!! Html::style('//cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css') !!}
     {!! Html::style('/css/style.css') !!}
     {!! Html::style('/fonts/flaticon.css') !!}
     {!! Html::style('/css/responsive.css') !!}
@@ -110,17 +111,56 @@
     <!-- SECTION ABOUT -->
     <div class="section" data-anchor="About" id="section1">
         <div class="wrap">
+            <div class="fp-tableCell students-content">
             <div class="box">
                 <!-- SECTION ABOUT CONTENT -->
-                <h2>About us</h2>
+
+
 
                     <!-- TABS CONTENT -->
-                    <div class="content-wrap">
-                        <p>Sandile Ndimande is a 26-year-old skilled technical trader at KWDForex. Born and raised in Durban, he completed his undergraduate diploma at Durban University of Technology in Information Technology (2013). He furthered his studies and completed his Bachelors Degree in Information Technology (2014) there after he went to the University of Kwa-Zulu Natal to honor his Honours Degree in Information Systems (2015).
-                            While still studying, Sandile started his working career at eThekwini Municipality (2013) as an Applications Engineer. He left eThekwini Municipality after a solid two successful years and joined a corporate giant Derivco as a Lead Quality Analyst (2016). He is ISTQB (UK Standard) Certified, Agile Certified as well as IIST (US Standard) Certified.
-                            <br><br>He had discovered the forex market in 2014 but took time to learn and after months of studying and nurturing the skill of trading the forex market, he then implemented and tested. He began trading his self taught abilities in 2015 to which he has been consistently profitable. He there after began teaching friends and colleagues on how to trade forex profitably.
-                            In 2017 Sandile started a forex institution called KWDForex with his team. This organizations objective is to educate and mentor individuals with their technical skills and strategies on how to make profits consistently by trading the financial markets. </p>
-                        <!-- TAB 1 -->
+                        <h2>About us</h2>
+
+
+                        <!-- ABOUT US -->
+                        <div class="slide" data-anchor="sandile-ndimande">
+
+
+                            <img src="{{ url('images/background/500x500/sandile-ndimande.jpg') }}" alt="Sandile Ndimande">
+                            <p>
+                                Sandile Ndimande is a skilled technical trader at KWDForex. Born and raised in Durban, he completed his undergraduate diploma at Durban University of Technology in Information Technology (2013).
+                                He furthered his studies and completed his Bachelors Degree in Information Technology (2014) there after he went to the University of Kwa-Zulu Natal to honor his Honours Degree in Information Systems (2015)
+                                <a href="#sandile" rel="modal:open">...Read more.</a>
+                            </p>
+                            <p> <span class="client-name"> <strong>-Sandile Ndimande</strong></span></p>
+                            <!-- TAB 1 -->
+                        </div>
+
+                        <div class="slide" data-anchor="sizwe-nene">
+
+
+                            <img src="{{ url('images/background/500x500/sizwe-nene.jpg') }}" alt="Sizwe Nene">
+                            <p>
+                                Sizwe Nene is a Durban born, technical forex trader. A graduate in Electronic Engineering from Durban University of Technology. And has been employed from 2014 as an Instrument and Control Technician at Lignotech South Africa.
+                                In 2016 he started learning forex, under his friends’ guidance and mentorship, which he later co-founded KWDForex group with.
+                                <a href="#sizwe"  rel="modal:open">...Read more.</a>
+                            </p>
+                            <p> <span class="client-name"> <strong>-Sizwe Nene</strong></span></p>
+                            <!-- TAB 1 -->
+                        </div>
+
+                        <div class="slide" data-anchor="mpumelelo-shezi">
+
+
+                            <img src="{{ url('images/background/500x500/mpumelelo-shezi.jpg') }}" alt="Mpumelelo Shezi">
+                            <p>
+                                Mpumelelo Shezi is a Durban born who completes the KWDForex trio. A Mechanical Engineering graduate from The Durban University of Technology , spent about 15 months working at a brewery company called NCP Alcohols where I handled several engineering projects successfully.
+                                The desire for the financial markets has always been there but at the time knowledge wasn't accessible until late 2015
+                                <a href="#mpumelelo" rel="modal:open">...Read more.</a>
+                            </p>
+                            <p> <span class="client-name"> <strong>-Mpumelelo Shezi</strong></span></p>
+                            <!-- TAB 1 -->
+                        </div>
+                        <!-- END SECTION ABOUT US -->
 
                     </div>
                     <!-- END TABS CONTENT -->
@@ -386,14 +426,80 @@
     </div>
 </div>
 <!-- END SOCIAL ICONS -->
+<!-- MODALS -->
 
+<!-- The Modal -->
+<div id="sandile" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Sandile Ndimande</h3>
+            <img src="{{ url('images/background/500x500/sandile-ndimande.jpg') }}" alt="Sandile Ndimande">
+        </div>
+        <div class="modal-body">
+            <p>Sandile Ndimande is a skilled technical trader at KWDForex. Born and raised in Durban, he completed his undergraduate diploma at Durban University of Technology in Information Technology (2013). He furthered his studies and completed his Bachelors Degree in Information Technology (2014) there after he went to the University of Kwa-Zulu Natal to honor his Honours Degree in Information Systems (2015).
+                While still studying, Sandile started his working career at eThekwini Municipality (2013) as an Applications Engineer. He left eThekwini Municipality after a solid two successful years and joined a corporate giant Derivco as a Lead Quality Analyst (2016). He is ISTQB (UK Standard) Certified, Agile Certified as well as IIST (US Standard) Certified.
+                <br><br>He had discovered the forex market in 2014 but took time to learn and after months of studying and nurturing the skill of trading the forex market, he then implemented and tested. He began trading his self taught abilities in 2015 to which he has been consistently profitable. He there after began teaching friends and colleagues on how to trade forex profitably.
+                In 2017 Sandile started a forex institution called KWDForex with his team. This organizations objective is to educate and mentor individuals with their technical skills and strategies on how to make profits consistently by trading the financial markets. </p>
 
+        </div>
+        <div class="modal-footer">
+            <a href="#!" rel="modal:close" class="close">Close</a>
+        </div>
+    </div>
+
+</div>
+<!-- The Modal -->
+<div id="mpumelelo" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Mpumelelo Shezi</h3>
+            <img src="{{ url('images/background/500x500/mpumelelo-shezi.jpg') }}" alt="Mpumelelo Shezi">
+        </div>
+        <div class="modal-body">
+            <p>
+                Mpumelelo Shezi is a Durban born who completes the KWDForex trio. A Mechanical Engineering graduate from The Durban University of Technology , spent about 15 months working at a brewery company called NCP Alcohols where I handled several engineering projects successfully.
+                <br><br>The desire for the financial markets has always been there but at the time knowledge wasn't accessible until late 2015 when I began educating myself through YouTube videos and babypips school thereafter I went around seeking help from already established traders. After a series of blowing accounts,
+                I began to see the light and made consistent profits. We spent a lot of time with Sandile Ndimande working tirelessly trying to improve our trading until we became consistent.   After sharing our strategy with close friends who also went on to make profit and be consistent , we then decided on forming KWD Forex along with Sizwe Nene and Sandile Ndimande.
+
+            </p>
+
+        </div>
+        <div class="modal-footer">
+            <a href="#!" rel="modal:close" class="close">Close</a>
+        </div>
+    </div>
+
+</div>
+<!-- The Modal -->
+<div id="sizwe" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Sizwe Nene</h3>
+            <img src="{{ url('images/background/500x500/sizwe-nene.jpg') }}" alt="Sizwe Nene">
+        </div>
+        <div class="modal-body">
+            <p>Sizwe Nene is a Durban born, technical forex trader. A graduate in Electronic Engineering from Durban University of Technology. And has been employed from 2014 as an Instrument and Control Technician at Lignotech South Africa. In 2016 he started learning forex, under his friends’ guidance and mentorship, which he later co-founded KWDForex group with.
+                <br><br>His growth has been amicable from the time he started forex trading, trading supply and demand imbalances. And is devoted to assisting and mentoring people with the skill and make forex trading accessible and understandable to people.</p>
+
+        </div>
+        <div class="modal-footer">
+            <a href="#!" rel="modal:close" class="close">Close</a>
+        </div>
+    </div>
+
+</div>
+
+<!-- END MODALS -->
 <!-- SCRIPTS -->
 {!! Html::script('/js/jquery.easings.min.js') !!}
 {!! Html::script('/js/jquery.fullPage.js') !!}
 {!! Html::script('/js/cbpFWTabs.js') !!}
 {!! Html::script('/js/jquery.sidr.min.js') !!}
 {!! Html::script('/js/scripts.js') !!}
+{!! Html::script('//cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js') !!}
 <!--<script type="text/javascript" src="js/video.js"></script> -->
 
 <script>
@@ -412,7 +518,6 @@ function closeSidr(){
     $.sidr('close', 'sidr', '');
 }
 </script>
-
 </body>
 
 </html>
