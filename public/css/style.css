@@ -1067,6 +1067,13 @@ div#section1 .box{
 @media only screen and (max-width: 870px) {
     .modal-content {
         width: 85%;
+        position: absolute;
+        top: 55px;
+    }
+    .modal-body {
+        max-height: 400px;
+        overflow-y: scroll;
+        font-size: 90%;
     }
     div#section1 .box{
         width: 100%;
