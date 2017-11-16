@@ -153,8 +153,8 @@
 
                             <img src="{{ url('images/background/500x500/mpumelelo-shezi.jpg') }}" alt="Mpumelelo Shezi">
                             <p>
-                                Mpumelelo Shezi is a Durban born who completes the KWDForex trio. A Mechanical Engineering graduate from The Durban University of Technology , spent about 15 months working at a brewery company called NCP Alcohols where I handled several engineering projects successfully.
-                                The desire for the financial markets has always been there but at the time knowledge wasn't accessible until late 2015
+                                Mpumelelo Shezi is a Durban born technical trader who completes the KWDforex trio. A Mechanical Engineering graduate from Durban University of Technology, he spent about 2 years working at a brewery company called NCP Alcohols where he handled several engineering projects successfully.
+                                The desire for the financial markets has always been there but at the time trading knowledge wasn't accessible until late 2015
                                 <a href="#mpumelelo" rel="modal:open">...Read more.</a>
                             </p>
                             <p> <span class="client-name"> <strong>-Mpumelelo Shezi</strong></span></p>
@@ -459,10 +459,10 @@
         </div>
         <div class="modal-body">
             <p>
-                Mpumelelo Shezi is a Durban born who completes the KWDForex trio. A Mechanical Engineering graduate from The Durban University of Technology , spent about 15 months working at a brewery company called NCP Alcohols where I handled several engineering projects successfully.
-                <br><br>The desire for the financial markets has always been there but at the time knowledge wasn't accessible until late 2015 when I began educating myself through YouTube videos and babypips school thereafter I went around seeking help from already established traders. After a series of blowing accounts,
-                I began to see the light and made consistent profits. We spent a lot of time with Sandile Ndimande working tirelessly trying to improve our trading until we became consistent.   After sharing our strategy with close friends who also went on to make profit and be consistent , we then decided on forming KWD Forex along with Sizwe Nene and Sandile Ndimande.
-
+                Mpumelelo Shezi is a Durban born technical trader who completes the KWDforex trio. A Mechanical Engineering graduate from Durban University of Technology, he spent about 2 years working at a brewery company called NCP Alcohols where he handled several engineering projects successfully.
+                <br><br>
+                The desire for the financial markets has always been there but at the time trading knowledge wasn't accessible until late 2015 where he seeked information from YouTube videos and online trading schools thereafter got assistance from already established traders.
+                He spent a lot of time with Sandile Ndimande working tirelessly trying to improve their trading strategy until he became consistent. The success resulting from sharing his strategy with close friends who also became profitable and consistent, brought about the formation of KWDforex, which he established along with Sizwe Nene and Sandile Ndimande.
             </p>
 
         </div>
