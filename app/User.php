@@ -14,8 +14,42 @@ class User extends Authenticatable
      *
      * @var array
      */
+
     protected $fillable = [
-        'name', 'email', 'password',
+        'is_verified',
+        'is_subscribed',
+        'code',
+        'status_is',
+        'firstname',
+        'lastname',
+        'displayname',
+        'contactnumber',
+        'address',
+        'town',
+        'province',
+        'postalcode',
+        'email',
+        'password',
+    ];
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'lastloggedin_at'
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'is_verified' => 'boolean',
+        'is_subscribed' => 'boolean',
     ];
 
     /**
@@ -26,4 +60,45 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    // A User belongsToMany Role
+    public function role()
+    {
+        return $this->belongsToMany('App\Role');
+    }
+
+    // Find out if A User has Role
+    public function hasRole($role)
+    {
+        if(is_string($role)) {
+            return $this->role->contains('name', $role);
+        }
+
+        return !! $role->intersect($this->role)->count();
+    }
+
+    // Assign Role to A User
+    public function actAs($role)
+    {
+        return $this->role()->save(
+            Role::whereName($role)->firstOrFail()
+        );
+    }
+
+    public function getFullNameAttribute() {
+        return ucfirst($this->firstname) . ' ' . ucfirst($this->lastname);
+    }
+
+    // A User has many Bookings
+    public function bookings()
+    {
+        return $this->hasMany('App\Booking');
+    }
+
+
+    // A User has many Events
+    public function events()
+    {
+        return $this->hasMany('App\Events');
+    }
 }

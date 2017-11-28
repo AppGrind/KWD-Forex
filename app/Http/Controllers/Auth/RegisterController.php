@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new controller instance.
@@ -48,7 +48,14 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'firstname' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+            'displayname' => 'required|string|max:255',
+            'contactnumber' => 'required|string|max:13',
+            'address' => 'required|string|max:255',
+            'town' => 'required|string|max:255',
+            'province' => 'required|string|max:255',
+            'postalcode' => 'required|numeric',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -62,10 +69,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+        $user = User::create([
+                            'code' => strtoupper(str_random(6)),
+                            'status_is' => 'not verified',
+                            'firstname' => $data['firstname'],
+                            'lastname' => $data['lastname'],
+                            'displayname' => $data['displayname'],
+                            'contactnumber' => $data['contactnumber'],
+                            'address' => $data['address'],
+                            'town' => $data['town'],
+                            'province' => $data['province'],
+                            'postalcode' => $data['postalcode'],
+                            'email' => $data['email'],
+                            'password' => bcrypt($data['password']),
         ]);
+
+        $user->actAs('member');
+        return $user;
     }
 }

@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\GetInTouchFormRequest;
+use App\Booking;
+use App\Event;
+use Auth;
+use Cache;
 use Mail;
 class HomeController extends Controller
 {
@@ -24,7 +28,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if(!Auth::user()->is_verified){
+            return view('auth.verification');
+        }
+        $events = Cache::get('events', function(){
+            return Event::whereNotIn('status_is', ['Pending'])->orderBy('created_at','desc')->get();
+        });
+        if($events->count() > 0){
+            $bookings = Cache::get('bookings', function(){
+                return Booking::get();
+            });
+        }
+        return view('backend.dashboard', compact('events', 'bookings'));
     }
 
     public function get_in_touch(GetInTouchFormRequest $request)
