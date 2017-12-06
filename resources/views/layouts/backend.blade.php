@@ -24,6 +24,8 @@
     {!! Html::style("backend/global/vendor/waves/waves.css") !!}
     {!! Html::style("backend/global/vendor/chartist/chartist.css") !!}
     {!! Html::style("backend/global/vendor/jvectormap/jquery-jvectormap.css") !!}
+
+    {!! Html::style("backend/global/vendor/toastr/toastr.css") !!}
     {!! Html::style("backend/global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css") !!}
 
     {!! Html::style("backend/assets/examples/css/dashboard/v1.css") !!}
@@ -99,6 +101,7 @@
 {{--{!! Html::script("backend/global/vendor/jvectormap/maps/jquery-jvectormap-world-mill-en.js") !!}--}}
 {!! Html::script("backend/global/vendor/matchheight/jquery.matchHeight-min.js") !!}
 {!! Html::script("backend/global/vendor/peity/jquery.peity.min.js") !!}
+{!! Html::script("backend/global/vendor/toastr/toastr.js") !!}
 
 <!-- Scripts -->
 {!! Html::script("backend/global/js/State.js") !!}
@@ -117,7 +120,6 @@
 <script>
     Config.set('assets', '../assets');
 </script>
-
 @yield('js')
 @yield('deleteJS')
 <!-- Page -->
@@ -129,7 +131,25 @@
 {!! Html::script("backend/global/js/Plugin/jvectormap.js") !!}
 {!! Html::script("backend/global/js/Plugin/peity.js") !!}
 {!! Html::script("backend/assets/examples/js/dashboard/v1.js") !!}
-
+<script>
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-full-width",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "slideDown",
+        "hideMethod": "slideUp"
+    }
+</script>
 @include('flash::message')
 </body>
 </html>

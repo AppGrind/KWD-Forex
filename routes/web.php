@@ -31,3 +31,4 @@ Route::resource('bookings', 'BookingController');
 Route::resource('notifications', 'BookingController');
 
 Route::post('users/{user}/update_password', 'UserController@update_password')->name('user.update_password');
+Route::post('events/{event}/publish', 'EventController@publish')->name('events.publish');

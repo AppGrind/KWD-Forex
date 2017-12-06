@@ -43,12 +43,18 @@
 
                 <div class="row mt-2 pb-2">
                     <div class="col-sm-12">
+                        @if(App\Booking::where(['user_id' => Auth::id(), 'event_id' => $event->id])->count() == 0)
                         {!! Form::open(['route'=>'bookings.store']) !!}
                         {{ Form::hidden('event',  $event->id)  }}
                         {{ Form::hidden('user',  Auth::id()) }}
                         <button type="submit" class="btn btn-sm btn-primary btn-round text-uppercase">Book Now<i class="icon md-chevron-right ml-1"></i>
                         </button>
                         {!! Form::close() !!}
+                        @else
+
+                            <button type="submit" disabled class="disabled btn btn-sm btn-primary btn-round text-uppercase"><i class="icon md-check mr-1"></i>Event Booked
+                            </button>
+                        @endif
                     </div>
                 </div>
             </div>

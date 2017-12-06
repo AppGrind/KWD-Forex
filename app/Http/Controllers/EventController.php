@@ -168,6 +168,20 @@ class EventController extends Controller
      *
      *
      *
+     */
+    public function publish(Event $event){
+
+        $event->status_is = "Open";
+        $event->save();
+
+        flash('Event published and opened to public for booking', 'success');
+        return back();
+    }
+
+    /**
+     *
+     *
+     *
      *
      */
     public function print_attendees(Event $event)

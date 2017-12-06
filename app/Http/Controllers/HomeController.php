@@ -8,6 +8,7 @@ use App\Booking;
 use App\Event;
 use Auth;
 use Cache;
+use Laracasts\Flash\Flash;
 use Mail;
 class HomeController extends Controller
 {

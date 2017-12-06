@@ -9,6 +9,8 @@
     </div>
     <h3 class="font-size-24">Log In</h3>
     <p>To access your account.</p>
+
+    @include('errors.forms')
     <form method="POST" action="{{ route('login') }}" autocomplete="on">
         {{ csrf_field() }}
         <div class="form-group floating" data-plugin="formMaterial">

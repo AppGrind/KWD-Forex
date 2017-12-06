@@ -154,13 +154,12 @@ class BookingController extends Controller
                     'event_id' => $event->id,
                     'status_is' => 'Pending'
                 ]);
-                flash('success', 'Thank you! Your booking was successful.');
+                flash('Thank you! Your booking was successful.', 'success');
             }else{
-                flash('warning', 'You are already booked for this event.');
+                flash('You are already booked for this event.', 'warning');
             }
-            return back();
         }
-
+        return back();
     }
 
     /**

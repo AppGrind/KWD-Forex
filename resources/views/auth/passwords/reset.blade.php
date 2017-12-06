@@ -10,6 +10,8 @@
         </div>
         <h3 class="font-size-24">Reset Password.</h3>
         <p>Oops! Can't access your account?</p>
+
+        @include('errors.forms')
         <form method="POST" action="{{ route('password.request') }}">
             {{ csrf_field() }}
             <div class="form-group floating" data-plugin="formMaterial">

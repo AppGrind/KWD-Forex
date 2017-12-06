@@ -75,11 +75,12 @@
                                                     class="icon md-edit"></i>
                                         </a>
                                     @if($event->status_is == 'Pending')
-                                        <a href="{{ url('events/'.$event->id.'/submitEvent') }}"
-                                               rel="tooltip"
+                                        {!! Form::open(['route' => ['events.publish', 'id' => $event->id], 'role'=>'form']) !!}
+                                        <button type="submit"
                                                class="btn btn-sm btn-primary btn-icon waves-effect waves-classic" data-toggle="tooltip" data-original-title="Publish Event">
                                                 <i class="icon md-mail-send"></i>
-                                            </a>
+                                            </button>
+                                        {!! Form::close() !!}
                                     @endif
                                 </div>
                                 @if($event->status_is == 'Pending')

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Carbon\Carbon;
-
+use Session;
 
 class LoginController extends Controller
 {
@@ -42,6 +42,7 @@ class LoginController extends Controller
     protected function authenticated()
     {
         $user = auth()->user();
+        session(['lastloggedin' => $user->lastloggedin_at]);
         $user->lastloggedin_at = Carbon::now();
         $user->save();
     }

@@ -29,7 +29,7 @@
                     <a class="avatar avatar-lg" href="javascript:void(0)">
                         <img src="../../../global/portraits/5.jpg" alt="...">
                     </a>
-                    <h4 class="profile-user">Terrance arnold</h4>
+                    <h4 class="profile-user">{{ $user->fullname }}</h4>
                     <p class="profile-job">Art director</p>
                     <p>Hi! I'm Adrian the Senior UI Designer at AmazingSurge. We hope you
                         enjoy the design and quality of Social.</p>

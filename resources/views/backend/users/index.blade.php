@@ -67,7 +67,7 @@
                                     <div class="media-body">
                                         <h5 class="mt-0 mb-5">
                                             {{ $user->fullname }}
-                                            <small>Last Access: {{ $user->lastloggedin_at->diffForHUmans() }}</small>
+                                            <small>Last Accessed: {{ $user->lastloggedin_at === null ? 'Never'  : $user->lastloggedin_at->diffForHUmans() }}</small>
                                         </h5>
                                         <p>
                                             <i class="icon icon-color md-email" aria-hidden="true"></i> <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
