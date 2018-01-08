@@ -17,8 +17,8 @@ class Booking extends Model
         'reference',
         'user_id',
         'event_id',
-        'proof_of_payment',
-        'mime_type',
+        'payment_img',
+        'img_path',
         'status_is',
     ];
 
@@ -31,9 +31,9 @@ class Booking extends Model
     public static $statuses = [
         'Paid' => 'Paid',
         'Pending' => 'Pending',
+        'Approve' => 'Approve',
         'Waiting' => 'Waiting',
         'Declined' => 'Declined',
-        'Rejected' => 'Rejected',
     ];
 
     // A Booking belongsTo User
@@ -41,6 +41,7 @@ class Booking extends Model
     {
         return $this->belongsTo('App\User');
     }
+
 
     // A Booking belongsTo an Event
     public function event()

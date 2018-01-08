@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Jobs\SendWelcomeEmail;
+use App\Notifications\NewUserWelcome;
+use Carbon\Carbon;
+use Mail;
+use App\Mail\Welcome;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -27,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -85,6 +90,12 @@ class RegisterController extends Controller
         ]);
 
         $user->actAs('member');
+
+        $user->notify(new NewUserWelcome());
+        //
+        SendWelcomeEmail::dispatch($user);
+
         return $user;
     }
+
 }

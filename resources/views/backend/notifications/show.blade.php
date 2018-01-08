@@ -6,73 +6,56 @@
 
 
 @section('breadcrumb')
-    {{ Breadcrumbs::render('notification.show') }}
+    {{ Breadcrumbs::render('notifications', $notification->id) }}
 @stop
 
 @section('actions')
-    @isset($button)
-        @foreach($buttons as $btn)
-            <a href="{{ url($btn['action']) }}" class="btn btn-sm btn-icon btn-primary btn-round waves-effect waves-classic" data-toggle="tooltip" data-original-title="{{ $btn['title'] }}">
-                <i class="{{ $btn['icon'] }}" aria-hidden="true"></i>
-            </a>
-        @endforeach
-    @endisset
+    @include('partials.buttons')
 @stop
 
 @section('content')
 
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        View Notifcation
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="{{ url('/notifications') }}">Notifcations</a></li>
-        <li class="active">View Notifcation</li>
-      </ol>
-    </section>
-
     <section class="content">
         <div class="row">  
-            <div class="col-md-8 col-md-offset-2">
-            
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Read Notification</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <div class="mailbox-read-info">
-                <h3>{{ $notification->reference_number }}</h3>
-                <h5>From: GFX Wealth Creation Team
-                  <span class="mailbox-read-time pull-right">{{ $notification->created_at->toDayDateTimeString()}}</span></h5>
-              </div>
-              <!-- /.mailbox-controls -->
-              <div class="mailbox-read-message">
-                <p>{!! $notification->message !!}</p>
-                <br>
-                <p style="clear:both;">Thanks.<br>Regards,<br>GFX Team</p>
-              </div>
-              <!-- /.mailbox-read-message -->
-            </div>
-            <!-- /.box-body -->
-            <!-- /.box-footer -->
-            <div class="box-footer">
-                <a href="{{url('/notifications')}}" class="btn btn-default"><i class="fa fa-arrow-left pull"></i> Back to Notifications</a>
-            </div>
-            <!-- /.box-footer -->
-          </div>
-          <!-- /. box -->
+            <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-sm-12">
+                <div class="panel" id="daily-feed">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Read Notification
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group list-group-dividered list-group-full">
+
+                            <li class="list-group-item">
+                                <div class="media">
+                                    <div class="pr-20">
+                                        <a class="avatar avatar-away" href="javascript:void(0)">
+                                            <img src="{{ Avatar::create($notification->data['sender'])->toBase64() }}" alt=""><i></i></a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h5 class="mt-0 mb-5">
+                                            <small class="float-right">{{ $notification->created_at->diffForHumans()}}</small>
+                                            <a class="name">{{ $notification->data['sender'] }}</a> said: {{ $notification->data['subject'] }}
+                                        </h5>
+                                        <small>{{ $notification->created_at->toDayDateTimeString()}}</small>
+                                        <div class="content card card-default">
+                                            <div class="card-block">
+                                                {!! $notification->data['message'] !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+          <!-- /. panel -->
             </div>
         </div>
     </section>
-</div>
+@stop
+@section('css')
 @stop
 
-@section('styles')
-@stop
-
-@section('javascript')
+@section('js')
 @stop

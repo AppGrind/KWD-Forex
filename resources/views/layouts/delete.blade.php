@@ -1,7 +1,7 @@
 @if($size)
-    <a class="btn btn-danger text-white waves-effect waves-classic btn-delete-{{ $id }} {{ $class }} btn-sm" data-toggle="tooltip" data-original-title="Delete"><i class="icon md-delete"></i> Delete</a>
+    <a class="btn btn-danger text-white waves-effect waves-classic btn-delete {{ $class }} btn-sm" data-message="{{ $message }}" data-resource-id="{{ $id }}" data-toggle="tooltip" data-original-title="{{ $tooltip }}"><i class="icon md-delete"></i> Delete</a>
 @else
-    <a class="btn btn-danger btn-icon waves-effect waves-classic text-white btn-delete-{{ $id }} {{ $class }} btn-sm"  data-toggle="tooltip" data-original-title="Delete"><i class="icon md-delete"></i></a>
+    <a class="btn btn-danger btn-icon waves-effect waves-classic text-white btn-delete {{ $class }} btn-sm" data-message="{{ $message }}" data-resource-id="{{ $id }}"  data-toggle="tooltip" data-original-title="{{ $tooltip }}"><i class="icon md-delete mr-0"></i></a>
 @endif
 
 {!! Form::open(['url' => $url.'/'.$id, 'id' => 'delete-form-'.$id, 'method' => 'POST', 'style' => 'display: inline-block;']) !!}
@@ -13,21 +13,22 @@
 <script> 
 jQuery(document).ready(function(){
 
-    jQuery('.btn-delete-{{ $id }}').on('click', function(e){
+    jQuery('.btn-delete').on('click', function(e){
+        var $resource = $(this);
         e.preventDefault();
         swal({
             title: 'Caution!',
-            text: '{{ $message }}',
+            text: $resource.attr('data-message'),
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#DD6B55',
-            confirmButtonText: 'Yes, delete this!',
+            confirmButtonText: 'Yes, Proceed!',
             closeOnConfirm: false,
             closeOnCancel: false
         },        
         function(isConfirm){
             if(isConfirm){
-                jQuery('#delete-form-{{$id}}').submit();
+                jQuery('#delete-form-'+$resource.attr('data-resource-id')).submit();
             }else{
                 swal('Cancelled', 'Operation aborted', 'error');
             }

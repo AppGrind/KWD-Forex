@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta name="description" content="bootstrap admin template">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title') | {{ config('app.name') }}</title>
 
     <link rel="apple-touch-icon" href="{{ asset('backend/assets/images/apple-touch-icon.png') }}">
@@ -33,9 +34,13 @@
     {!! Html::style("backend/global/fonts/material-design/material-design.min.css") !!}
     {!! Html::style("backend/assets/skins/kwd-gold.css") !!}
     {!! Html::style("backend/global/fonts/brand-icons/brand-icons.min.css") !!}
+    {!! Html::style("https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css") !!}
 
     @yield('css')
-
+    <style>
+        a.dropdown-item{width: auto; text-decoration: none !important;}
+        button.dropdown-item{width: 77%;}
+    </style>
     {!! Html::style("http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic") !!}
 <!--[if lt IE 9]>
     {!! Html::script("backend/global/vendor/html5shiv/html5shiv.min.js") !!}
@@ -46,6 +51,7 @@
     <![endif]-->
     <!-- Scripts -->
     {!! Html::script("backend/global/vendor/breakpoints/breakpoints.js") !!}
+    {!! Html::script("https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js") !!}
     <script>
         Breakpoints();
     </script>

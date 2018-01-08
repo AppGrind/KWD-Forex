@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Notification;
+use Auth;
+use Gate;
 use Illuminate\Http\Request;
 
 class NotificationController extends Controller
@@ -12,64 +13,20 @@ class NotificationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function read($id)
     {
         //
-    }
+        $notification = Auth::user()->notifications->where('id', $id)->first();
+        if($notification == null){
+            flash('Only the owner can read the full contents!', 'warning');
+            return back();
+        }
+        if($notification->markAsRead() == null){
+            $notification->markAsRead();
+        }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Notification  $notification
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Notification $notification)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Notification  $notification
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Notification $notification)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Notification  $notification
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Notification $notification)
-    {
-        //
+        return view('backend.notifications.show', compact('notification'));
+//        dd($notification->data['sender']);
     }
 
     /**
@@ -78,8 +35,17 @@ class NotificationController extends Controller
      * @param  \App\Notification  $notification
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Notification $notification)
+    public function destroy($id)
     {
-        //
+
+        $notification = Auth::user()->notifications->where('id', $id)->first();
+        if($notification == null){
+            flash('Only the owner can delete this!', 'warning');
+            return back();
+        }
+        $notification->delete();
+
+        flash('Notification deleted!', 'success');
+        return redirect()->route('users.show', Auth::id());
     }
 }

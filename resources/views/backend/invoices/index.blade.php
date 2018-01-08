@@ -10,76 +10,54 @@
 @stop
 
 @section('actions')
-	@isset($button)
-		@foreach($buttons as $btn)
-			<a href="{{ url($btn['action']) }}" class="btn btn-sm btn-icon btn-primary btn-round waves-effect waves-classic" data-toggle="tooltip" data-original-title="{{ $btn['title'] }}">
-				<i class="{{ $btn['icon'] }}" aria-hidden="true"></i>
-			</a>
-		@endforeach
-	@endisset
+	@include('partials.buttons')
 @stop
 
 @section('content')
-	<div class="content-wrapper">
+	<div class="panel panel-bordered">
 
-		<!-- Content Header (Page header) -->
-		<section class="content-header">
-			<h1>
-				Invoices
-			</h1>
-			<ol class="breadcrumb">
-				<li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-				<li class="active">Invoices</li>
-			</ol>
-		</section>
-
-		<!-- Main Content -->
-		<section class="content">
+		<div class="panel-heading with-border">
+			<h3 class="panel-title">All Invoices
+			</h3>
+		</div>
+		<div class="panel-body">
 			<div class="row">
-				<div class="col-xs-12">
-                    <div class="box box-default">
-                        <div class="box-header with-border">
-                            <a href="{{ url('invoices/create') }}" class="btn btn-sm pull-right btn-social btn-primary" rel="tooltip" title="View"><i class="fa fa-plus-circle"></i> Create Invoice
-                            </a>
-							<h3 class="box-title">All Invoices
-							</h3>
-						</div>
-						<div class="box-body">
-							<table class="nowrap table table-hover table-striped table-condensed" id="invoices">
-								<thead>
-								<tr>
-									<th>ID</th>
-									<th>Amount</th>
-									<th>Status</th>
-									<th>Created</th>
-									<th>Actions</th>
-								</tr>
-								</thead>
-								<tbody>
-								@foreach($invoices as $invoice)
-									<tr>
-										<td class='hidden-350'>{{ $invoice->id }}</td>
-										<td>R{{ $invoice->amount }}</td>
-										<td>{{ $invoice->status_is }}</td>
-										<td>{{ $invoice->created_at }}</td>
-										<td>
-											<a href="{{ url('invoices', $invoice->id) }}" class="btn-social btn btn-sm btn-default" rel="tooltip" title="View">
-												<i class="fa ion ion-ios-calendar-outline"></i>	View
-											</a>
-											<a href="{{ url('invoices/'.$invoice->id.'/edit') }}" class="btn-social btn btn-sm btn-default" rel="tooltip"
-											   title="Edit">
-												<i class="fa ion ion-ios-compose-outline"></i>	Edit
-											</a>
-										</td>
-									</tr>
-								@endforeach
-								</tbody>
-							</table>
-						</div>
-					</div>
+				<div class="col-sm-12">
+					<table class="nowrap table table-hover table-striped table-condensed" id="invoices">
+						<thead>
+						<tr>
+							<th>ID</th>
+							<th>Amount</th>
+							<th>Status</th>
+							<th>Created</th>
+							<th>Actions</th>
+						</tr>
+						</thead>
+						<tbody>
+						@foreach($invoices as $invoice)
+							<tr>
+								<td class='hidden-350'>{{ $invoice->id }}</td>
+								<td>R{{ $invoice->amount }}</td>
+								<td>{{ $invoice->status_is }}</td>
+								<td>{{ $invoice->created_at->toFormattedDateString() }}</td>
+								<td>
+									<div class="btn-group">
+										<a href="{{ route('invoices.show', $invoice->id) }}" class="btn btn-sm btn-info" data-toggle="tooltip" data-original-title="View">
+											<i class="icon md-eye"></i>	<span class="sr-only">View</span>
+										</a>
+										<a href="{{ route('invoices.print', $invoice->id) }}" class="btn btn-sm btn-info" data-toggle="tooltip"
+										   data-original-title="Edit">
+											<i class="icon md-print"></i>	<span class="sr-only">Print</span>
+										</a>
+									</div>
+								</td>
+							</tr>
+						@endforeach
+						</tbody>
+					</table>
 				</div>
 			</div>
-		</section>
+		</div>
 	</div>
 
 @endsection

@@ -10,14 +10,9 @@
 @stop
 
 @section('actions')
-    @isset($buttons)
-    @foreach($buttons as $btn)
-        <a href="{{ url($btn['action']) }}" class="btn btn-sm btn-icon btn-primary btn-round waves-effect waves-classic" data-toggle="tooltip" data-original-title="{{ $btn['title'] }}">
-            <i class="{{ $btn['icon'] }}" aria-hidden="true"></i>
-        </a>
-    @endforeach
-    @endisset
+    @include('partials.buttons')
 @stop
+
 
 @section('content')
 
@@ -48,7 +43,7 @@
                                         class="mr-3 icon md-circle float-right {{ ($event->status_is == 'Open') ? 'text-success' : 'text-danger'}}" data-toggle="tooltip" data-original-title="{{ $event->status_is }}"></i>
                             </td>
                             <td>{{ $event->host }}</td>
-                            <td>{{ $bookings->where('event_id', $event->id)->count() }}
+                            <td>{{ $event->bookings->count() }}
                                 / {{ $event->number_of_seats }}</td>
 
                             <td>{{ \Carbon\Carbon::parse($event->start_date)->format('F j') }}
@@ -58,12 +53,12 @@
                             <td>
 
                                 <div class="btn-group" role="group">
-
-                                        <a href="{{ url('attendees/'. $event->id . '/add') }}"
+                                    @if($event->status_is == "Open")
+                                        <a href="{{ route('guest.add', ['id'=> $event->id]) }}"
                                            rel="tooltip" class="btn btn-primary btn-sm btn-icon waves-effect waves-classic" data-toggle="tooltip" data-original-title="Add Guest">
                                             <i class="icon md-account-add"></i>
                                         </a>
-
+                                    @endif
                                     <a href="{{ url('events', $event->id) }}"
                                            rel="tooltip"
                                            class="btn btn-sm btn-primary btn-icon waves-effect waves-classic" data-toggle="tooltip" data-original-title="View Event">
@@ -98,6 +93,10 @@
                         <i class="icon md-info icon-2x"></i> <br>No events found.</h2>
             @endif
             </div>
+
+        <div class="panel-footer mt-40">
+            {{ $events->links() }}
+        </div>
     </div>
 
 @endsection
@@ -125,7 +124,7 @@
     {{ Html::script('https://cdn.datatables.net/responsive/2.1.1/js/responsive.bootstrap4.min.js') }}
     <script>
         $(document).ready(function () {
-            $('#events').DataTable({responsive: true});
+            $('#events').DataTable({responsive: true, paging:false});
         });
     </script>
 @stop

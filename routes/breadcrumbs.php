@@ -40,16 +40,16 @@ Breadcrumbs::register('invoices.create', function ($breadcrumbs) {
     $breadcrumbs->parent('invoices');
     $breadcrumbs->push('Create Invoice', route('invoices.create'));
 });
-
-Breadcrumbs::register('invoices.edit', function ($breadcrumbs) {
+Breadcrumbs::register('invoices.show', function ($breadcrumbs, $invoice) {
     $breadcrumbs->parent('invoices');
-    $breadcrumbs->push('Edit Invoice', route('invoices.edit'));
+    $breadcrumbs->push('Show Invoice', route('invoices.show', $invoice->id));
 });
 
-Breadcrumbs::register('invoices.show', function ($breadcrumbs) {
-    $breadcrumbs->parent('invoices');
-    $breadcrumbs->push('Show Invoice', route('invoices.show'));
+Breadcrumbs::register('invoices.edit', function ($breadcrumbs, $invoice) {
+    $breadcrumbs->parent('invoices.show');
+    $breadcrumbs->push('Edit Invoice', route('invoices.edit', $invoice->id));
 });
+
 //Invoices Breadcrumbs end
 
 
@@ -111,13 +111,14 @@ Breadcrumbs::register('bookings.create', function ($breadcrumbs) {
     $breadcrumbs->push('Create Booking', route('bookings.create'));
 });
 
-Breadcrumbs::register('notifications', function ($breadcrumbs) {
-    $breadcrumbs->parent('dashboard');
-    $breadcrumbs->push('Notifications', route('notifications.index'));
+Breadcrumbs::register('bookings.show', function ($breadcrumbs, $booking) {
+    $breadcrumbs->parent('bookings');
+    $breadcrumbs->push('Show Booking', route('bookings.show', $booking->id));
 });
 
-Breadcrumbs::register('notifications.show', function ($breadcrumbs) {
-    $breadcrumbs->parent('notifications');
-    $breadcrumbs->push('Show Notification', route('notifications.show'));
+Breadcrumbs::register('notifications', function ($breadcrumbs, $notification) {
+    $breadcrumbs->parent('dashboard');
+    $breadcrumbs->push('Notifications', route('notification.read', $notification));
 });
+
 //Events Breadcrumbs end

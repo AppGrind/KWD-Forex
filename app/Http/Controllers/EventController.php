@@ -9,6 +9,8 @@ use App\Http\Requests\EventsFormRequest;
 use Auth;
 use Carbon\Carbon;
 use PDF;
+use Gate;
+
 
 class EventController extends Controller
 {
@@ -19,7 +21,8 @@ class EventController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth', 'su']);
+        $this->middleware('auth');
+        $this->middleware('su', ['except' => ['show']]);
     }
 
 
@@ -31,13 +34,12 @@ class EventController extends Controller
     public function index()
     {
         //
-        $events = Event::orderBy('created_at','desc')->get();
-        $bookings = Booking::whereIn('event_id', $events->pluck('id'))->select('id', 'user_id', 'event_id', 'status_is', 'created_at', 'updated_at')->get();
+        $events = Event::orderBy('created_at','desc')->paginate(10);
 
         $addBtn = ['title'=>'Create Event', 'action' => 'events/create', 'icon' => 'icon md-plus'];
         $buttons =[];
         array_push($buttons, $addBtn);
-        return view('backend.events.index', compact('events', 'bookings', 'buttons'));
+        return view('backend.events.index', compact('events', 'buttons'));
     }
 
     /**
@@ -138,28 +140,13 @@ class EventController extends Controller
         //
         if ($event->status_is == 'Pending'){
             // Delete an event
+            $event->delete();
+            flash('Event has been deleted!', 'success');
         }else{
-            flash('You can only delete an event that\'s Pending', 'error');
+            flash('You can only delete pending events', 'error');
         }
-        $event->delete();
-        flash('Event has been deleted!', 'success');
 
         $events = Event::get();
-        $bookings = Booking::whereIn('event_id', $events->pluck('id'))->select('id', 'user_id', 'event_id', 'status_is', 'created_at', 'updated_at')->get();
-        return view('backend.events.index', compact('events', 'bookings'));
-    }
-
-
-    public function submitEvent($id){
-        $event = Event::where('id',$id)->first();
-        if ($event){
-            $event->update(['status_is'=>'Open']);
-            flash('Event is now open and members can book it!', 'success');
-        }else{
-            flash('The event you are looking for is invalid.', 'error');
-        }
-
-        $events = Event::orderBy('created_at','desc')->get();
         $bookings = Booking::whereIn('event_id', $events->pluck('id'))->select('id', 'user_id', 'event_id', 'status_is', 'created_at', 'updated_at')->get();
         return redirect('events');
     }
@@ -177,24 +164,4 @@ class EventController extends Controller
         flash('Event published and opened to public for booking', 'success');
         return back();
     }
-
-    /**
-     *
-     *
-     *
-     *
-     */
-    public function print_attendees(Event $event)
-    {
-
-        $bookings = Booking::where('event_id', $event->id)->select('id', 'event_id', 'user_id', 'status_is', 'created_at', 'updated_at')->get();
-
-        // return view('pdf.attendee_register', compact('bookings', 'event'));
-        $data=['bookings'=>$bookings, 'event'=>$event];
-        $pdf = PDF::loadView('pdf.attendee_register', $data);
-
-        return $pdf->download($event->start_date .' '. $event->start_time.'-attendee register- '.$event->name.'.pdf');
-
-    }
-
 }

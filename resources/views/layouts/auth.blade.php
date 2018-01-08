@@ -15,6 +15,8 @@
     {!! Html::style("backend/global/css/bootstrap-extend.min.css") !!}
     {!! Html::style("backend/assets/css/site.min.css") !!}
     <!-- Plugins -->
+
+    {!! Html::style("backend/global/vendor/toastr/toastr.css") !!}
     {!! Html::style("backend/global/vendor/animsition/animsition.css") !!}
     {!! Html::style("backend/global/vendor/asscrollable/asScrollable.css") !!}
     {!! Html::style("backend/global/vendor/switchery/switchery.css") !!}
@@ -81,6 +83,7 @@
 {!! Html::script("backend/global/vendor/screenfull/screenfull.js") !!}
 {!! Html::script("backend/global/vendor/slidepanel/jquery-slidePanel.js") !!}
 {!! Html::script("backend/global/vendor/jquery-placeholder/jquery.placeholder.js") !!}
+{!! Html::script("backend/global/vendor/toastr/toastr.js") !!}
 
 <!-- Scripts -->
 {!! Html::script("backend/global/js/State.js") !!}
@@ -134,6 +137,25 @@
             transition: function(url){ window.location.href = url; }
         });
     });
+
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-full-width",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "slideDown",
+        "hideMethod": "slideUp"
+    }
 </script>
+@include('flash::message')
 </body>
 </html>

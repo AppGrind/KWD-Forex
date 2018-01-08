@@ -2,11 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\InvoiceFormRequest;
+use Auth;
+use Gate;
+use PDF;
 use App\Invoice;
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('su', ['except' => ['index', 'show', 'printInvoice']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,72 +24,63 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+        if (!Auth::user()->is_verified) {
+            return redirect('/verification');
+        }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        // Get all invoices if admin
+        if(Gate::allows('admin')){
+            $invoices = Invoice::all();
+        }else{
+            $invoices = Invoice::where('user_id', Auth::id())->get();
+        }
+
+        return view('backend.invoices.index', compact('invoices'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Invoice  $invoice
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show(Invoice $invoice)
     {
-        //
+
+        if(Gate::denies('owner-or-admin', $invoice->user_id)){
+            flash('Unauthorized access attempt!', 'error');
+            return redirect('/dashboard');
+        }
+
+        $listBtn = ['title'=>'All Invoices', 'action' => 'invoices', 'icon' => 'icon md-format-list-bulleted'];
+        $buttons =[];
+        array_push($buttons,  $listBtn);
+
+        // Show invoice of $id
+        $user = Auth::user();
+
+
+        return view('backend.invoices.show', compact('invoice','user', 'buttons'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Invoice  $invoice
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Invoice $invoice)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Invoice  $invoice
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Invoice $invoice)
+    // Generate PDF invoice
+    public function print(Invoice $invoice)
     {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Invoice  $invoice
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Invoice $invoice)
-    {
-        //
+        if(Gate::denies('owner-or-admin', $invoice->user_id)){
+            flash('Unauthorized access attempt!', 'error');
+            return redirect('/dashboard');
+        }
+
+        // Get user info from Session
+        $user = Auth::user();
+
+        $data=['invoice'=>$invoice, 'user'=>$user];
+
+        $pdf = PDF::loadView('pdf.invoice', $data);
+
+        return $pdf->download($invoice->created_at->format('YmdHis').'-invoice-'.$invoice->id.'.pdf');
     }
 }

@@ -6,129 +6,106 @@
 
 
 @section('breadcrumb')
-	{{ Breadcrumbs::render('invoices.show') }}
+	{{ Breadcrumbs::render('invoices.show', $invoice) }}
 @stop
 
 @section('actions')
-	@isset($button)
-		@foreach($buttons as $btn)
-			<a href="{{ url($btn['action']) }}" class="btn btn-sm btn-icon btn-primary btn-round waves-effect waves-classic" data-toggle="tooltip" data-original-title="{{ $btn['title'] }}">
-				<i class="{{ $btn['icon'] }}" aria-hidden="true"></i>
-			</a>
-		@endforeach
-	@endisset
+    @include('partials.buttons')
 @stop
 
+
 @section('content')
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="invoice-title">
-					<h2>Invoice # {{ $invoice->id }}</h2><p class="pull-right"><a href="{{ url('/invoices') }}">Back to Invoices</a></p>
-				</div>
-				<hr>
-				<div class="row">
-					<div class="col-xs-6">
-						<address>
-							<strong>Billed To:</strong><br>
-							{{ $invoice->address->contact_person }}<br>
-							@if(strlen($invoice->address->billing_unit)>1) {{ $invoice->address->billing_unit }}, @endif {{ $invoice->address->billing_street }}<br>
-							{{ $invoice->address->billing_town }}, {{ $invoice->address->billing_city }}<br>
-							{{ $invoice->address->billing_code }}
-						</address>
-					</div>
-					<div class="col-xs-6 text-right">
-						<address>
-							<strong>Posted To:</strong><br>
-							{{ $invoice->address->contact_person }}<br>
-							@if(strlen($invoice->address->postal_unit)>1) {{ $invoice->address->postal_unit }}, @endif {{ $invoice->address->postal_street }}<br>
-							{{ $invoice->address->postal_town }}, {{ $invoice->address->postal_city }}<br>
-							{{ $invoice->address->postal_code }}
-						</address>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-6">
-						<address>
-							<strong>Payment Method:</strong><br>
-							Deposit to: <br>
-							First National Bank<br>
-							62715445658<br>
-							250655
-						</address>
-					</div>
-					<div class="col-xs-6 text-right">
-						<address>
-							<strong>Invoice Date:</strong><br>
-							{{ $invoice->created_at->format('F d, Y') }}<br><br>
-							<strong>Due Date:</strong><br>
-							{{ $invoice->created_at->addDays(7)->format('F d, Y') }}<br><br>
-							<strong>Status:</strong><br>
-							{{ $invoice->status_is }}<br>
-						</address>
-					</div>
-				</div>
-			</div>
-		</div>
 
-		<div class="row">
-			<div class="col-md-12">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title"><strong>Invoice summary</strong></h3>
-					</div>
-					<div class="panel-body">
-						<div class="table-responsive">
-							<table class="table table-condensed">
-								<thead>
-								<tr>
-									<td><strong>Item</strong></td>
-									<td class="text-center"><strong>Price</strong></td>
-									<td class="text-center"><strong>Quantity</strong></td>
-									<td class="text-right"><strong>Totals</strong></td>
-								</tr>
-								</thead>
-								<tbody>
+    <div class="panel">
+        <div class="panel-body container-fluid">
+            <div class="row">
+                <div class="col-lg-3">
+                    <h3>
+                        {{ Html::image('images/logo/KWD-FOREX-LOGO-black.png', '', [ 'style'=>'width: 200px;']) }}</h3>
+                        @include('partials.company_details')
+                </div>
+                <div class="col-lg-3 offset-lg-6 text-right">
+                    <h4>Invoice Info</h4>
+                    <p>
+                        <a class="font-size-20" href="javascript:void(0)">#{{ $invoice->id }}</a>
+                        <br> To:
+                        <br>
+                        <span class="font-size-20">{{ $invoice->user->fullname }}</span>
+                    </p>
+                    <address>
+                        {{ $invoice->user->address }}
+                        <br>
+                        {{ $invoice->user->town }}
+                        <br>
+                        {{ $invoice->user->province }},
+                        {{ $invoice->postalcode }}
+                        <br>
+                        <abbr title="Phone">P:</abbr>&nbsp;&nbsp;
+                        {{ $invoice->user->contactnumber }}
+                        <br>
+                    </address>
+                    <span>Invoice Date: {{ $invoice->created_at->format('F d, Y') }}</span>
+                    <br>
+                    <span>Invoice Due: {{ $invoice->created_at->addDays(7)->format('F d, Y') }}</span>
+                    <br>
+                    <span>Invoice Status: {{ $invoice->status_is }}</span>
+                </div>
+            </div>
+            <div class="page-invoice-table table-responsive">
+                <table class="table table-hover text-right">
+                    <thead>
+                    <tr>
+                        <th class="text-center">#</th>
+                        <th>Description</th>
+                        <th class="text-right">Quantity</th>
+                        <th class="text-right">Unit Cost</th>
+                        <th class="text-right">Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($invoice->items as $item)
+                        <tr>
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->description }}</td>
+                            <td>{{ $item->pivot->quantity }}</td>
+                            <td>R{{ number_format($item->pivot->price,2,'.',',') }}</td>
+                            <td>R{{ number_format($item->pivot->quantity * $item->pivot->price,2,'.',',') }}</td>
+                        </tr>
+                    @endforeach
 
-								@foreach($invoice->items as $item)
-									<tr>
-										<td>{{ $item->name }}</td>
-										<td class="text-center">R{{ number_format($item->pivot->price,2,'.',',') }}</td>
-										<td class="text-center">{{ $item->pivot->quantity }}</td>
-										<td class="text-right">R{{ number_format($item->pivot->quantity * $item->pivot->price,2,'.',',') }}</td>
-									</tr>
-								@endforeach
-
-								<tr>
-									<td class="thick-line"></td>
-									<td class="thick-line"></td>
-									<td class="thick-line text-center"><strong>Subtotal</strong></td>
-									<td class="thick-line text-right">R{{ number_format($invoice->amount,2,'.',',') }}</td>
-								</tr>
-								<tr>
-									<td class="no-line"></td>
-									<td class="no-line"></td>
-									<td class="no-line text-center"><strong>Discount</strong></td>
-									<td class="no-line text-right">R{{ number_format(0,2,'.',',') }}</td>
-								</tr>
-								<tr>
-									<td class="no-line"></td>
-									<td class="no-line"></td>
-									<td class="no-line text-center"><strong>VAT @14%</strong></td>
-									<td class="no-line text-right">R{{ number_format(0,2,'.',',') }}</td>
-								</tr>
-								<tr>
-									<td class="no-line"></td>
-									<td class="no-line"></td>
-									<td class="no-line text-center"><strong>Total</strong></td>
-									<td class="no-line text-right">R{{ number_format($invoice->amount,2,'.',',') }}</td>
-								</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                    <tr>
+                        <td colspan="4">SUBTOTAL</td>
+                        <td class="total"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">VAT 14%</td>
+                        <td class="total">R{{ number_format(0,2,'.',',') }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="grand total">GRAND TOTAL</td>
+                        <td class="grand total">R{{ number_format($invoice->amount,2,'.',',') }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-right clearfix">
+                <div class="float-right">
+                    <p>Sub - Total amount:
+                        <span>R{{ number_format($invoice->amount,2,'.',',') }}</span>
+                    </p>
+                    <p>VAT 14%:
+                        <span>R{{ number_format(0,2,'.',',') }}</span>
+                    </p>
+                    <p class="page-invoice-amount">Grand Total:
+                        <span>R{{ number_format($invoice->amount,2,'.',',') }}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="text-right">
+                <a class="btn btn-sm btn-animate btn-animate-side btn-info waves-effect waves-classic" href="{{ route('invoices.print', $invoice->id) }}">
+                    <span><i class="icon md-print" aria-hidden="true"></i> Print</span>
+                </a>
+            </div>
+        </div>
+    </div>
 @stop

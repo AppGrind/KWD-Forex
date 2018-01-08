@@ -14,6 +14,7 @@
         @include('errors.forms')
         <form method="POST" action="{{ route('password.request') }}">
             {{ csrf_field() }}
+            <input type="hidden" name="token" value="{{ $token }}">
             <div class="form-group floating" data-plugin="formMaterial">
                 <label class="floating-label" for="email">Email</label>
                 <input type="email" class="form-control empty {{ $errors->has('email') ? 'has-danger' : '' }}" value="{{ old('email') }}" id="email" name="email">
@@ -33,33 +34,18 @@
                     </span>
                 @endif
             </div>
-            </div>
             <div class="form-group floating" data-plugin="formMaterial">
-                <label class="floating-label" for="confirm_password">Confirm Password</label>
-                <input type="password" class="form-control empty {{ $errors->has('confirm_password') ? 'has-danger' : '' }}" id="confirm_password" name="confirm_password">
-                @if ($errors->has('confirm_password'))
+                <label class="floating-label" for="password_confirmation">Confirm Password</label>
+                <input type="password" class="form-control empty {{ $errors->has('password_confirmation') ? 'has-danger' : '' }}" id="password_confirmation" name="password_confirmation">
+                @if ($errors->has('password_confirmation'))
                     <span class="help-block">
-                        <strong>{{ $errors->first('confirm_password') }}</strong>
+                        <strong>{{ $errors->first('password_confirmation') }}</strong>
                     </span>
                 @endif
             </div>
-            </div>
             <button type="submit" class="btn btn-primary btn-block">Reset Password</button>
         </form>
-        <footer class="page-copyright"><br>
-            <p>© 2017. All RIGHT RESERVED.</p>
-            <div class="social">
-                <a class="btn btn-icon btn-round social-twitter mx-5" href="javascript:void(0)">
-                    <i class="icon bd-twitter" aria-hidden="true"></i>
-                </a>
-                <a class="btn btn-icon btn-round social-facebook mx-5" href="javascript:void(0)">
-                    <i class="icon bd-facebook" aria-hidden="true"></i>
-                </a>
-                <a class="btn btn-icon btn-round social-google-plus mx-5" href="javascript:void(0)">
-                    <i class="icon bd-google-plus" aria-hidden="true"></i>
-                </a>
-            </div>
-        </footer>
+        @include('partials.auth-footer')
     </div>
 @endsection
 

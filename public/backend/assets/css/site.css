@@ -9067,18 +9067,18 @@ body > .loader {
   border: 0 none;
   border-radius: 1000px;
 }
-.avatar i {
-  width: 40px;
-  height: 40px;
-  border: 2px solid #fff;
-  border-radius: 100%;
-  background: #3f51b5;
-  text-align: center;
-  color: #fff;
-  line-height: 38px;
-  font-size: 1.4em;
-  position: unset;
-}
+/*.avatar i {*/
+  /*width: 40px;*/
+  /*height: 40px;*/
+  /*border: 2px solid #fff;*/
+  /*border-radius: 100%;*/
+  /*background: #3f51b5;*/
+  /*text-align: center;*/
+  /*color: #fff;*/
+  /*line-height: 38px;*/
+  /*font-size: 1.4em;*/
+  /*position: unset;*/
+/*}*/
 .avatar-online i {
   background-color: #4caf50;
 }

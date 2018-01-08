@@ -89,6 +89,14 @@ class User extends Authenticatable
         return ucfirst($this->firstname) . ' ' . ucfirst($this->lastname);
     }
 
+    public function getFullAddressAttribute() {
+        return ucfirst($this->address) . ' ' . ucfirst($this->town) . ' ' . ucfirst($this->province) . ', ' . $this->postalcode;
+    }
+
+    public function getUserVerifiedAttribute() {
+        return $this->is_verified;
+    }
+
     // A User has many Bookings
     public function bookings()
     {
@@ -99,6 +107,12 @@ class User extends Authenticatable
     // A User has many Events
     public function events()
     {
-        return $this->hasMany('App\Events');
+        return $this->hasMany('App\Event');
+    }
+
+    // A User has many Invoices
+    public function invoices()
+    {
+        return $this->hasMany('App\Invoice');
     }
 }

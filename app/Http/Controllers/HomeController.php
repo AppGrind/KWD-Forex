@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Invoice;
 use Illuminate\Http\Request;
 use App\Http\Requests\GetInTouchFormRequest;
 use App\Booking;
@@ -29,22 +30,26 @@ class HomeController extends Controller
      */
     public function index()
     {
+
         if(!Auth::user()->is_verified){
             return view('auth.verification');
         }
         $events = Cache::get('events', function(){
             return Event::whereNotIn('status_is', ['Pending'])->orderBy('created_at','desc')->get();
         });
-        if($events->count() > 0){
-            $bookings = Cache::get('bookings', function(){
-                return Booking::get();
-            });
-        }
-        return view('backend.dashboard', compact('events', 'bookings'));
+        return view('backend.dashboard', compact('events'));
+    }
+
+
+    public function verification()
+    {
+     return view('auth.verification');
     }
 
     public function get_in_touch(GetInTouchFormRequest $request)
     {
+
+        // ToDo use mailable and queues
         $email = 'info@kwdforex.com';
         $sender_email = $request['email'];
         $subject = $request['subject'];

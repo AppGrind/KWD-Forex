@@ -1,7 +1,7 @@
 @extends('layouts.backend')
 
 @section('title')
-    Users
+    {{ $user->firstname }}'s Profile
 @stop
 
 
@@ -10,13 +10,7 @@
 @stop
 
 @section('actions')
-    @isset($buttons)
-        @foreach($buttons as $btn)
-            <a href="{{ url($btn['action']) }}" class="btn btn-sm btn-icon btn-primary btn-round waves-effect waves-classic" data-toggle="tooltip" data-original-title="{{ $btn['title'] }}">
-                <i class="{{ $btn['icon'] }}" aria-hidden="true"></i>
-            </a>
-        @endforeach
-    @endisset
+    @include('partials.buttons')
 @stop
 
 @section('content')
@@ -27,33 +21,25 @@
             <div class="card card-shadow text-center">
                 <div class="card-block">
                     <a class="avatar avatar-lg" href="javascript:void(0)">
-                        <img src="../../../global/portraits/5.jpg" alt="...">
+                        <img src="{{ Avatar::create($user->firstname)->toBase64() }}" />
                     </a>
                     <h4 class="profile-user">{{ $user->fullname }}</h4>
-                    <p class="profile-job">Art director</p>
-                    <p>Hi! I'm Adrian the Senior UI Designer at AmazingSurge. We hope you
-                        enjoy the design and quality of Social.</p>
-                    <div class="profile-social">
-                        <a class="icon bd-twitter" href="javascript:void(0)"></a>
-                        <a class="icon bd-facebook" href="javascript:void(0)"></a>
-                        <a class="icon bd-dribbble" href="javascript:void(0)"></a>
-                        <a class="icon bd-github" href="javascript:void(0)"></a>
+                    <p class="profile-job">{{ $user->displayname }}</p>
+                    <p>{{ $user->fulladdress }}</p>
+                    <div class="profile-social mb-4">
+                        <i class="icon mr-1 md-email"></i> {{ $user->email }}  <i class="icon ml-2 md-phone"></i> {{ $user->contactnumber }}
                     </div>
-                    <button type="button" class="btn btn-primary">Follow</button>
+                    <button type="button" class="btn btn-primary"> <i class="icon md-traffic mr-2"></i> {{ ucfirst($user->status_is) }}</button>
                 </div>
                 <div class="card-footer">
                     <div class="row no-space">
-                        <div class="col-4">
-                            <strong class="profile-stat-count">260</strong>
-                            <span>Follower</span>
+                        <div class="col-6">
+                            <strong class="profile-stat-count">{{ $user->bookings->count() }}</strong>
+                            <span>Bookings</span>
                         </div>
-                        <div class="col-4">
-                            <strong class="profile-stat-count">180</strong>
-                            <span>Following</span>
-                        </div>
-                        <div class="col-4">
-                            <strong class="profile-stat-count">2000</strong>
-                            <span>Tweets</span>
+                        <div class="col-6">
+                            <strong class="profile-stat-count">{{ $user->notifications->count() }}</strong>
+                            <span>{{ $user->notifications->count()==1? 'Notification' : 'Notifications' }}</span>
                         </div>
                     </div>
                 </div>
@@ -65,347 +51,71 @@
             <div class="panel">
                 <div class="panel-body nav-tabs-animate nav-tabs-horizontal" data-plugin="tabs">
                     <ul class="nav nav-tabs nav-tabs-line" role="tablist">
-                        <li class="nav-item" role="presentation"><a class="active nav-link" data-toggle="tab" href="#activities"
-                                                                    aria-controls="activities" role="tab">Activities <span class="badge badge-pill badge-danger">5</span></a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#profile" aria-controls="profile"
-                                                                    role="tab">Profile</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#messages" aria-controls="messages"
+                        <li class="nav-item" role="presentation"><a class="active nav-link" data-toggle="tab" href="#activities" aria-controls="messages"
+                                                                    role="tab">Activities</a></li>
+                        <li class="nav-item" role="presentation"><a class="active nav-link" data-toggle="tab" href="#messages" aria-controls="messages"
                                                                     role="tab">Messages</a></li>
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#" aria-expanded="false">Menu </a>
                             <div class="dropdown-menu" role="menu">
                                 <a class="active dropdown-item" data-toggle="tab" href="#activities" aria-controls="activities"
-                                   role="tab">Activities <span class="badge badge-pill badge-danger">5</span></a>
-                                <a class="dropdown-item" data-toggle="tab" href="#profile" aria-controls="profile"
-                                   role="tab">Profile</a>
+                                   role="tab">Activities</a>
                                 <a class="dropdown-item" data-toggle="tab" href="#messages" aria-controls="messages"
                                    role="tab">Messages</a>
                             </div>
                         </li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane active animation-slide-left" id="activities" role="tabpanel">
+                        <div class="active tab-pane animation-slide-left" id="activities" role="tabpanel">
                             <ul class="list-group">
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <div class="pr-20">
-                                            <a class="avatar" href="javascript:void(0)">
-                                                <img class="img-fluid" src="../../../global/portraits/2.jpg" alt="...">
-                                            </a>
-                                        </div>
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-5">Ida Fleming
-                                                <small>posted an updated</small>
-                                            </h5>
-                                            <small>active 14 minutes ago</small>
-                                            <div class="profile-brief">“Check if it can be corrected with overflow : hidden”</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <div class="pr-20">
-                                            <a class="avatar" href="javascript:void(0)">
-                                                <img class="img-fluid" src="../../../global/portraits/3.jpg" alt="...">
-                                            </a>
-                                        </div>
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-5">Julius
-                                                <small>uploaded 4 photos</small>
-                                            </h5>
-                                            <small>active 14 minutes ago</small>
-                                            <div class="profile-brief clearfix">
-                                                <img class="profile-uploaded" src="../../../global/photos/placeholder.png" alt="...">
-                                                <img class="profile-uploaded" src="../../../global/photos/placeholder.png" alt="...">
-                                                <img class="profile-uploaded" src="../../../global/photos/placeholder.png" alt="...">
-                                                <img class="profile-uploaded" src="../../../global/photos/placeholder.png" alt="...">
+                                @foreach($user->notifications as $notification)
+                                    @if($notification->data['type'] != "Message")
+                                    <li class="list-group-item">
+                                        <div class="media">
+                                            <div class="pr-20">
+                                                <a class="avatar" href="javascript:void(0)">
+                                                    <img class="img-fluid" src="{{ Avatar::create($notification->data['sender'])->toBase64() }}" />
+                                                </a>
+                                            </div>
+                                            <div class="media-body">
+                                                <h5 class="mt-0 mb-5">{{ $notification->data['sender'] }}
+                                                    <small>{{ $notification->data['type'] }}</small>
+                                                </h5>
+                                                <small>{{ $notification->created_at->diffForHumans() }}</small>
+                                                <div class="profile-brief">{{ $notification->data['message']}}</div>
+                                            </div>
+                                            <div class="pl-20 align-self-center">
+                                                <a href="{{ route('notification.read', $notification->id ) }}" class="btn btn-icon btn-info btn-sm btn-round" data-toggle="tooltip" data-original-title="Open" ><i class="icon md-email-open mr-0"></i></a>
+                                                {!! Btn::delete($notification->id, url('notifications'), false, '', 'btn-icon btn-round' , 'Are you sure you want to delete this notification?',  'Delete')!!}
                                             </div>
                                         </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <div class="pr-20">
-                                            <a class="avatar" href="javascript:void(0)">
-                                                <img class="img-fluid" src="../../../global/portraits/4.jpg" alt="...">
-                                            </a>
-                                        </div>
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-5">Owen Hunt
-                                                <small>posted a new note</small>
-                                            </h5>
-                                            <small>active 14 minutes ago</small>
-                                            <div class="profile-brief">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                Integer nec odio. Praesent libero. Sed cursus ante
-                                                dapibus diam. Sed nisi. Nulla quis sem at nibh elementum
-                                                imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce
-                                                nec tellus sed augue semper porta. Mauris massa.</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <div class="pr-20">
-                                            <a class="avatar" href="javascript:void(0)">
-                                                <img class="img-fluid" src="../../../global/portraits/5.jpg" alt="...">
-                                            </a>
-                                        </div>
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-5">Terrance Arnold
-                                                <small>posted a new blog</small>
-                                            </h5>
-                                            <small>active 14 minutes ago</small>
-                                            <div class="profile-brief">
-                                                <div class="media">
-                                                    <a class="pr-20">
-                                                        <img class="w-160" src="../../../global/photos/placeholder.png" alt="...">
-                                                    </a>
-                                                    <div class="media-body pl-20">
-                                                        <h4 class="mt-0 mb-5">Getting Started</h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing
-                                                            elit. Integer nec odio. Praesent libero. Sed
-                                                            cursus ante dapibus diam. Sed nisi. Nulla quis
-                                                            sem at nibh elementum imperdiet. Duis sagittis
-                                                            ipsum. Praesent mauris.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <div class="pr-20">
-                                            <a class="avatar" href="javascript:void(0)">
-                                                <img class="img-fluid" src="../../../global/portraits/2.jpg" alt="...">
-                                            </a>
-                                        </div>
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-5">Ida Fleming
-                                                <small>posted an new activity comment</small>
-                                            </h5>
-                                            <small>active 14 minutes ago</small>
-                                            <div class="profile-brief">Cras sit amet nibh libero, in gravida nulla. Nulla vel
-                                                metus.</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <div class="pr-20">
-                                            <a class="avatar" href="javascript:void(0)">
-                                                <img class="img-fluid" src="../../../global/portraits/3.jpg" alt="...">
-                                            </a>
-                                        </div>
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-5">Julius
-                                                <small>posted an updated</small>
-                                            </h5>
-                                            <small>active 14 minutes ago</small>
-                                            <div class="profile-brief">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                Integer nec odio. Praesent libero. Sed cursus ante
-                                                dapibus diam.</div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <a class="btn btn-block btn-default profile-readMore" href="javascript:void(0)"
-                               role="button">Show more</a>
-                        </div>
-                        <div class="tab-pane animation-slide-left" id="profile" role="tabpanel">
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <div class="pr-20">
-                                            <a class="avatar" href="javascript:void(0)">
-                                                <img class="img-fluid" src="../../../global/portraits/5.jpg" alt="...">
-                                            </a>
-                                        </div>
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-5">Terrance Arnold
-                                                <small>posted a new blog</small>
-                                            </h5>
-                                            <small>active 14 minutes ago</small>
-                                            <div class="profile-brief">
-                                                <div class="media">
-                                                    <a class="pr-20">
-                                                        <img class="w-160" src="../../../global/photos/placeholder.png" alt="...">
-                                                    </a>
-                                                    <div class="media-body pl-20">
-                                                        <h4 class="mt-0 mb-5">Getting Started</h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing
-                                                            elit. Integer nec odio. Praesent libero. Sed
-                                                            cursus ante dapibus diam. Sed nisi. Nulla quis
-                                                            sem at nibh elementum imperdiet. Duis sagittis
-                                                            ipsum. Praesent mauris.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <div class="pr-20">
-                                            <a class="avatar" href="javascript:void(0)">
-                                                <img class="img-fluid" src="../../../global/portraits/2.jpg" alt="...">
-                                            </a>
-                                        </div>
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-5">Ida Fleming
-                                                <small>posted an updated</small>
-                                            </h5>
-                                            <small>active 14 minutes ago</small>
-                                            <div class="profile-brief">“Check if it can be corrected with overflow : hidden”</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <div class="pr-20">
-                                            <a class="avatar" href="javascript:void(0)">
-                                                <img class="img-fluid" src="../../../global/portraits/4.jpg" alt="...">
-                                            </a>
-                                        </div>
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-5">Owen Hunt
-                                                <small>posted a new note</small>
-                                            </h5>
-                                            <small>active 14 minutes ago</small>
-                                            <div class="profile-brief">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                Integer nec odio. Praesent libero. Sed cursus ante
-                                                dapibus diam. Sed nisi. Nulla quis sem at nibh elementum
-                                                imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce
-                                                nec tellus sed augue semper porta. Mauris massa.</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <div class="pr-20">
-                                            <a class="avatar" href="javascript:void(0)">
-                                                <img class="img-fluid" src="../../../global/portraits/2.jpg" alt="...">
-                                            </a>
-                                        </div>
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-5">Ida Fleming
-                                                <small>posted an new activity comment</small>
-                                            </h5>
-                                            <small>active 14 minutes ago</small>
-                                            <div class="profile-brief">Cras sit amet nibh libero, in gravida nulla. Nulla vel
-                                                metus.</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <div class="pr-20">
-                                            <a class="avatar" href="javascript:void(0)">
-                                                <img class="img-fluid" src="../../../global/portraits/3.jpg" alt="...">
-                                            </a>
-                                        </div>
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-5">Julius
-                                                <small>uploaded 4 photos</small>
-                                            </h5>
-                                            <small>active 14 minutes ago</small>
-                                            <div class="profile-brief clearfix">
-                                                <img class="profile-uploaded" src="../../../global/photos/placeholder.png" alt="...">
-                                                <img class="profile-uploaded" src="../../../global/photos/placeholder.png" alt="...">
-                                                <img class="profile-uploaded" src="../../../global/photos/placeholder.png" alt="...">
-                                                <img class="profile-uploaded" src="../../../global/photos/placeholder.png" alt="...">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                    @endif
+                                @endforeach
                             </ul>
                         </div>
-                        <div class="tab-pane animation-slide-left" id="messages" role="tabpanel">
+                        <div class="active tab-pane animation-slide-left" id="messages" role="tabpanel">
                             <ul class="list-group">
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <div class="pr-20">
-                                            <a class="avatar" href="javascript:void(0)">
-                                                <img class="img-fluid" src="../../../global/portraits/2.jpg" alt="...">
-                                            </a>
-                                        </div>
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-5">Ida Fleming
-                                                <small>posted an updated</small>
-                                            </h5>
-                                            <small>active 14 minutes ago</small>
-                                            <div class="profile-brief">“Check if it can be corrected with overflow : hidden”</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <div class="pr-20">
-                                            <a class="avatar" href="javascript:void(0)">
-                                                <img class="img-fluid" src="../../../global/portraits/5.jpg" alt="...">
-                                            </a>
-                                        </div>
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-5">Terrance Arnold
-                                                <small>posted a new blog</small>
-                                            </h5>
-                                            <small>active 14 minutes ago</small>
-                                            <div class="profile-brief">
-                                                <div class="media">
-                                                    <a class="pr-20">
-                                                        <img class="w-160" src="../../../global/photos/placeholder.png" alt="...">
-                                                    </a>
-                                                    <div class="media-body pl-20">
-                                                        <h4 class="mt-0 mb-5">Getting Started</h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing
-                                                            elit. Integer nec odio. Praesent libero. Sed
-                                                            cursus ante dapibus diam. Sed nisi. Nulla quis
-                                                            sem at nibh elementum imperdiet. Duis sagittis
-                                                            ipsum. Praesent mauris.</p>
-                                                    </div>
-                                                </div>
+                                @foreach($user->notifications as $notification)
+                                    @if($notification->data['type'] == "Message")
+                                    <li class="list-group-item">
+                                        <div class="media">
+                                            <div class="pr-20">
+                                                <a class="avatar" href="javascript:void(0)">
+                                                    <img class="img-fluid" src="{{ Avatar::create($notification->data['sender'])->toBase64() }}" />
+                                                </a>
+                                            </div>
+                                            <div class="media-body">
+                                                <h5 class="mt-0 mb-5">{{ $notification->data['sender'] }}
+                                                    <small>{{ $notification->data['type'] }}</small>
+                                                </h5>
+                                                <small>{{ $notification->created_at->diffForHumans() }}</small>
+                                                <div class="profile-brief">{{ $notification->data['message'] }}</div>
                                             </div>
                                         </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <div class="pr-20">
-                                            <a class="avatar" href="javascript:void(0)">
-                                                <img class="img-fluid" src="../../../global/portraits/4.jpg" alt="...">
-                                            </a>
-                                        </div>
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-5">Owen Hunt
-                                                <small>posted a new note</small>
-                                            </h5>
-                                            <small>active 14 minutes ago</small>
-                                            <div class="profile-brief">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                Integer nec odio. Praesent libero. Sed cursus ante
-                                                dapibus diam. Sed nisi. Nulla quis sem at nibh elementum
-                                                imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce
-                                                nec tellus sed augue semper porta. Mauris massa.</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <div class="pr-20">
-                                            <a class="avatar" href="javascript:void(0)">
-                                                <img class="img-fluid" src="../../../global/portraits/3.jpg" alt="...">
-                                            </a>
-                                        </div>
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-5">Julius
-                                                <small>posted an updated</small>
-                                            </h5>
-                                            <small>active 14 minutes ago</small>
-                                            <div class="profile-brief">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                Integer nec odio. Praesent libero. Sed cursus ante
-                                                dapibus diam.</div>
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                    @endif
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -417,9 +127,73 @@
 @endsection
 
 @section('css')
+    <style>
+        .avatar-lg {
+            width: 100px;
+        }
+        .page-user .page-content form {
+            margin-bottom: 40px;
+        }
 
+        .page-user .page-content .list-group-item {
+            padding: 25px 0;
+            border-top-color: #e0e0e0;
+        }
+
+        .page-user .page-content .list-group-item:first-child {
+            border-top-color: transparent;
+        }
+
+        .page-user .page-content .list-group-item:last-child {
+            border-bottom-color: #e0e0e0;
+        }
+
+        .page-user .page-content .list-group-item .media-heading > small {
+            margin-left: 10px;
+        }
+
+        .page-user .page-content .list-group-item p {
+            margin-bottom: 5px;
+        }
+
+        .page-user .page-content .nav-tabs-horizontal {
+            position: relative;
+        }
+
+        .page-user .page-content .page-user-sortlist {
+            position: absolute;
+            top: 5px;
+            right: 0;
+            z-index: 2;
+        }
+
+        @media (max-width: 991px) {
+            .page-user .page-content .page-user-sortlist {
+                top: -15px;
+            }
+        }
+
+        @media (max-width: 479px) {
+            .page-user .page-content .list-group-item .media-body {
+                display: block;
+                text-align: center;
+            }
+            .page-user .page-content .list-group-item .media-body {
+                width: auto;
+            }
+            .page-user .page-content .list-group-item .media-body {
+                margin-top: 15px;
+            }
+            .page-user .page-content .tab-content nav {
+                text-align: center;
+            }
+        }
+
+    </style>
 @stop
 
 @section('js')
-
+    {!! Html::script("backend/global/js/Plugin/aspaginator.js") !!}
+    {!! Html::script("backend/global/js/Plugin/responsive-tabs.js") !!}
+    {!! Html::script("backend/global/js/Plugin/tabs.js") !!}
 @stop

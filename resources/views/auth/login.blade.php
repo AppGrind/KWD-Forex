@@ -31,21 +31,8 @@
         <button type="submit" class="btn btn-primary btn-block">Log in</button>
     </form>
     <p>Don't have an account? <a href="{{ url('register') }}"  class="animsition-link">Sign Up</a></p>
-    <footer class="page-copyright">
-        <br>
-        <p>© 2017. All RIGHT RESERVED.</p>
-        <div class="social">
-            <a class="btn btn-icon btn-round social-twitter mx-5" href="javascript:void(0)">
-                <i class="icon bd-twitter" aria-hidden="true"></i>
-            </a>
-            <a class="btn btn-icon btn-round social-facebook mx-5" href="javascript:void(0)">
-                <i class="icon bd-facebook" aria-hidden="true"></i>
-            </a>
-            <a class="btn btn-icon btn-round social-google-plus mx-5" href="javascript:void(0)">
-                <i class="icon bd-google-plus" aria-hidden="true"></i>
-            </a>
-        </div>
-    </footer>
+
+    @include('partials.auth-footer')
 </div>
 @endsection
 

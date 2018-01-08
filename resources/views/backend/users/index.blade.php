@@ -9,13 +9,7 @@
 @stop
 
 @section('actions')
-    @isset($buttons)
-        @foreach($buttons as $btn)
-            <a href="{{ url($btn['action']) }}" class="btn btn-sm btn-icon btn-primary btn-round waves-effect waves-classic" data-toggle="tooltip" data-original-title="{{ $btn['title'] }}">
-                <i class="{{ $btn['icon'] }}" aria-hidden="true"></i>
-            </a>
-        @endforeach
-    @endisset
+    @include('partials.buttons')
 @stop
 
 @section('content')
@@ -26,7 +20,7 @@
             <form class="page-search-form" role="search">
                 <div class="input-search input-search-dark">
                     <i class="input-search-icon md-search" aria-hidden="true"></i>
-                    <input type="text" class="form-control" id="inputSearch" name="search" placeholder="Search Users">
+                    <input type="text" class="form-control" id="inputSearch" name="search" placeholder="Search Users" disabled>
                     <button type="button" class="input-search-close icon md-close" aria-label="Close"></button>
                 </div>
             </form>
@@ -66,7 +60,7 @@
                                     </div>
                                     <div class="media-body">
                                         <h5 class="mt-0 mb-5">
-                                            {{ $user->fullname }}
+                                            <a href="{{ url('users/'. $user->id) }}">{{ $user->fullname }}</a>
                                             <small>Last Accessed: {{ $user->lastloggedin_at === null ? 'Never'  : $user->lastloggedin_at->diffForHUmans() }}</small>
                                         </h5>
                                         <p>
@@ -76,11 +70,11 @@
                                             <i class="icon icon-color md-pin" aria-hidden="true"></i>  {{ $user->address }}, {{ $user->town }}, {{ $user->province }}
                                         </p>
                                         <p>
-                                            <i class="icon icon-color md-smartphone" aria-hidden="true"></i> {{ $user->contactnumber }}
+                                            <i class="icon icon-color md-phone" aria-hidden="true"></i> {{ $user->contactnumber }}
                                         </p>
                                     </div>
                                     <div class="pl-20 pr-20 align-self-center">
-                                        <input type="checkbox" class="to-labelauty" data-labelauty="Not Verified|Verified" {{ $user->is_verified ? 'checked' : '' }}/>
+                                        <input type="checkbox" class="to-labelauty verify-user" data-user-id="{{ $user->id }}" data-user-status="{{ $user->is_verified ? true : false }}" data-labelauty="Not Verified|Verified" {{ $user->is_verified ? 'checked' : '' }} />
                                     </div>
                                 </div>
                             </li>
@@ -173,6 +167,41 @@
     <script>
         $(document).ready(function(){
             $(".to-labelauty").labelauty({minimum_width: "100px" });
+
+            $('.verify-user').on('change', function(){
+                var $resource = $(this);
+
+                var data = {
+                    id: $resource.attr('data-user-id'),
+                    status: $resource.attr('data-user-status')
+                };
+
+                var a = "{{ url('/') }}",
+                    t = $('meta[name="csrf-token"]').attr("content");
+                $.ajax({
+                    url: a + "/ajax/verify",
+                    type: "POST",
+                    data: data,
+                    headers: {
+                        "X-CSRF-TOKEN": t
+                    },
+                    success: function(e) {
+                        console.log(e);
+                        switch ((e = e.data).level) {
+                            case "success":
+                                $resource.attr('data-user-status', e.status_is);
+                                toastr.success(e.message,e.title);
+                                break;
+                            case "warning":
+                                toastr.warning(e.message,e.title);
+                                break;
+                        }
+                    },
+                    error: function(e) {
+
+                    }
+                });
+            });
         });
     </script>
 @stop
