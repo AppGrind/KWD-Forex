@@ -39,6 +39,6 @@ class SendAttachmentUploadedAdminEmail implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->admin->email)->attach(Storage::url('booking/'.$this->booking->img_path .'/'.$this->booking->payment_img) )->send(new BookingAttachmentUploadedAdminEmail($this->admin, $this->booking));
+        Mail::to($this->admin->email)->send(new BookingAttachmentUploadedAdminEmail($this->admin, $this->booking));
     }
 }
