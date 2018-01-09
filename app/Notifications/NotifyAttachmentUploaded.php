@@ -46,7 +46,7 @@ class NotifyAttachmentUploaded extends Notification
             'type' => 'Notification',
             'sender' => config('app.name'),
             'subject'  => 'Uploaded an attachment for Booking #' . $this->booking->reference,
-            'message'=>'You\'ve uploaded an attachment as proof of payment for booking #' .$this->booking->reference . ', your booking will be approved once the attachment has been verify.'
+            'message'=>'You\'ve uploaded an attachment as proof of payment for booking #' .$this->booking->reference . ', your booking will be approved once the attachment has been verified.'
         ];
     }
 }

@@ -25,7 +25,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware(['auth']);
-        $this->middleware('su', ['except'=>['show', 'edit', 'update', 'verify_account']]);
+        $this->middleware('su', ['except'=>['show', 'edit', 'update', 'verify_account', 'update_password', 'edit_password']]);
 
     }
 
@@ -180,7 +180,7 @@ class UserController extends Controller
             return redirect('/dashboard');
         }
 
-        $user = Auth::user();
+//        $user = Auth::user();
         $validation = Validator::make($request->all(), [
             // Here's how our new validation rule is used.
             'old_password' => 'hash:' . $user->password,

@@ -70,6 +70,10 @@
                                 </div>
                             </div>
                         </div>
+                        @if($event->status_is == 'Closed')
+                            <button type="button" disabled class="disabled btn btn-sm btn-danger btn-round text-uppercase ml-15"><i class="icon md-info-outline ml-1"></i>Event Closed
+                            </button>
+                        @else
                             @if(App\Booking::where(['user_id' => Auth::id(), 'event_id' => $event->id])->count() == 0)
                                 {!! Form::open(['route'=>'bookings.store']) !!}
                                 {{ Form::hidden('event',  $event->id)  }}
@@ -82,6 +86,7 @@
                                 <button type="button" disabled class="disabled btn btn-sm btn-primary btn-round text-uppercase ml-15"><i class="icon md-check ml-1"></i>Event Booked
                                 </button>
                             @endif
+                        @endif
                         </div>
                     </div>
                 </div>
