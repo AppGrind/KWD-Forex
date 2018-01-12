@@ -4,7 +4,7 @@
             <tr>
                 <td>
                     <a href="{{ $url }}">
-                        <img src="{{ url('images/logo/KWD-FOREX-LOGO-white.png') }}" style="width: 250px">
+                        <img src="{{ url('images/logo/KWD-FOREX-LOGO-white-emails.png') }}" style="width: 250px">
                     </a>
                 </td>
                 <td class="slogan">{{ config('app.slogan') }}</td>

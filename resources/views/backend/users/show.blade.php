@@ -79,7 +79,7 @@
                                             </div>
                                             <div class="media-body">
                                                 <h5 class="mt-0 mb-5">{{ $notification->data['sender'] }}
-                                                    <small>{{ $notification->data['type'] }}</small>
+                                                    <small>{{ $notification->read_at == null? 'Unread' : '' }}</small>
                                                 </h5>
                                                 <small>{{ $notification->created_at->diffForHumans() }}</small>
                                                 <div class="profile-brief">{{ $notification->data['message']}}</div>
@@ -94,7 +94,7 @@
                                 @endforeach
                             </ul>
                         </div>
-                        <div class="active tab-pane animation-slide-left" id="messages" role="tabpanel">
+                        <div class="tab-pane animation-slide-left" id="messages" role="tabpanel">
                             <ul class="list-group">
                                 @foreach($user->notifications as $notification)
                                     @if($notification->data['type'] == "Message")
@@ -107,10 +107,14 @@
                                             </div>
                                             <div class="media-body">
                                                 <h5 class="mt-0 mb-5">{{ $notification->data['sender'] }}
-                                                    <small>{{ $notification->data['type'] }}</small>
+                                                    <small>{{ $notification->read_at == null? 'Unread' : '' }}</small>
                                                 </h5>
                                                 <small>{{ $notification->created_at->diffForHumans() }}</small>
                                                 <div class="profile-brief">{{ $notification->data['message'] }}</div>
+                                            </div>
+                                            <div class="pl-20 align-self-center">
+                                                <a href="{{ route('notification.read', $notification->id ) }}" class="btn btn-icon btn-info btn-sm btn-round" data-toggle="tooltip" data-original-title="Open" ><i class="icon md-email-open mr-0"></i></a>
+                                                {!! Btn::delete($notification->id, url('notifications'), false, '', 'btn-icon btn-round' , 'Are you sure you want to delete this notification?',  'Delete')!!}
                                             </div>
                                         </div>
                                     </li>

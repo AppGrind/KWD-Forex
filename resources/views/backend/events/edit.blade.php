@@ -32,44 +32,46 @@
     </div>
 @stop
 
-@section('styles')
-  <!-- Bootstrap time Picker -->
-  {!! Html::style('plugins/timepicker/bootstrap-timepicker.min.css') !!}
-  <!-- bootstrap datepicker -->
-  {!! Html::style('plugins/datepicker/datepicker3.css') !!}
+
+@section('css')
+    <!-- Bootstrap time Picker -->
+    {!! Html::style('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.min.css') !!}
+    <!-- bootstrap datepicker -->
+    {!! Html::style('https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.3/datepicker.min.css') !!}
 
 @stop
 
-@section('javascript')
-<!-- bootstrap time picker -->
-{!! Html::script('plugins/timepicker/bootstrap-timepicker.min.js') !!}
-<!-- bootstrap date picker -->
-{!! Html::script('plugins/datepicker/bootstrap-datepicker.js') !!}
-<script>
-    //Timepicker
-    $(".timepicker").timepicker({
-      showInputs: false
-    });
+@section('js')
+    <!-- bootstrap time picker -->
+    {!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.min.js') !!}
+    <!-- bootstrap date picker -->
+    {!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.3/datepicker.min.js') !!}
+    <script>
+        //Timepicker
+        $(".timepicker").timepicker({
+            showInputs: false
+        });
 
-    //Date picker
-    $('.eventdatepicker').datepicker({
-        format: 'yyyy/mm/dd',
-        autoclose: true,
-        startDate: '1d'
-    });
-    
-    $('#start_date').datepicker().on('change', function(e){
-        $('#end_date').removeAttr('disabled placeholder');
-        $('#end_date').datepicker('setStartDate', $('#start_date').val());
-        
-        if($('#end_date').val() != ''){
-            if(($('#start_date').datepicker('getDate') - $('#end_date').datepicker('getDate')) < 0 ){
-                //Nothing to do here all is well
-            }else{//NaN is returned if false
-               $('#end_date').val($('#start_date').val());
+        //Date picker
+        $('.eventdatepicker').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            startDate: '1d'
+        });
+
+        $('#start_date').datepicker().on('change', function(e){
+            $('#end_date').removeAttr('disabled placeholder');
+            $('#end_date').datepicker('setStartDate', $('#start_date').val());
+
+            if($('#end_date').val() != ''){
+                if(($('#start_date').datepicker('getDate') - $('#end_date').datepicker('getDate')) < 0 ){
+                    //Nothing to do here all is well
+                }else{//NaN is returned if false
+                    $('#end_date').val($('#start_date').val());
+                }
             }
-        }
-        
-    });
-</script>
+
+        });
+
+    </script>
 @stop

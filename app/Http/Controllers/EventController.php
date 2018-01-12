@@ -104,7 +104,6 @@ class EventController extends Controller
     public function edit(Event $event)
     {
         //
-
         $addBtn = ['title'=>'Add Event', 'action' => 'events/create', 'icon' => 'icon md-plus'];
         $listBtn = ['title'=>'All Events', 'action' => 'events', 'icon' => 'icon md-format-list-bulleted'];
         $buttons =[];

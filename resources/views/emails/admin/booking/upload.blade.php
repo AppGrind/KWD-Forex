@@ -12,7 +12,7 @@
     <li>Login if required to and click the thumbs up button to approve OR thumbs down button to decline (requires reason) the booking.</li>
 </ol>
 @component('mail::promotion')
-@component('mail::button', ['url' => Storage::url('booking/'.$booking->img_path .'/'.$booking->payment_img)])
+@component('mail::button', ['url' => url(Storage::url('booking/'.$booking->img_path .'/'.$booking->payment_img))])
     Download Attachment
 @endcomponent
 @endcomponent

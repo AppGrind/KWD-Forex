@@ -20,7 +20,7 @@ class ItemController extends Controller
     public function index()
     {
         // Get all items
-        $items = Item::all();
+        $items = Item::paginate(10);
         $addBtn = ['title'=>'Add Item', 'action' => 'items/create', 'icon' => 'icon md-plus'];
         $buttons =[];
         array_push($buttons, $addBtn);

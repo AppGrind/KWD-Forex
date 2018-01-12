@@ -25,7 +25,7 @@
 
         <div class="panel-body">
             @if(count($events)> 0)
-                <table class="table table-hover table-striped w-full" id="events">
+                <table class="table table-hover dt-responsive table-striped w-full" id="events">
                     <thead>
                     <tr>
                         <th>Title</th>

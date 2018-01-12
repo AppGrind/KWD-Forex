@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description" content="bootstrap admin template">
+    <meta name="description" content="KWD Forex group offers beginners and advanced financial markets techniques. We mainly focus on swing trading which is the most effective and sustainable way of trading the currency market and also do intraday. KWDForex mentors will engage with clients every Sunday to share the upcoming weeks analysis and our mentors trade in line with the students to instill self belief.">
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title') | {{ config('app.name') }}</title>
 
     <link rel="apple-touch-icon" href="{{ asset('backend/assets/images/apple-touch-icon.png') }}">
-    <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ url('images/logo/KWD-FOREX.ico') }}">
     <!-- Stylesheets -->
     {!! Html::style("backend/global/css/bootstrap.min.css") !!}
     {!! Html::style("backend/global/css/bootstrap-extend.min.css") !!}
@@ -79,10 +79,10 @@
 <!-- End Page -->
 <!-- Footer -->
 <footer class="site-footer">
-    <div class="site-footer-legal">© 2017 <a
-                href="http://themeforest.net/item/remark-responsive-bootstrap-admin-template/11989202">Remark</a></div>
+    <div class="site-footer-legal">© {{ \Carbon\Carbon::now()->year }} <a
+                href="{{ url('/') }}">KWD Forex</a></div>
     <div class="site-footer-right">
-        Crafted with <i class="red-600 icon md-favorite"></i> by <a href="http://themeforest.net/user/amazingSurge">amazingSurge</a>
+        All RIGHT RESERVED.
     </div>
 </footer>
 <!-- Core  -->

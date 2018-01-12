@@ -9,7 +9,7 @@
         }
         body {
             position: relative;
-            width: 21cm;
+            width: 18cm;
             height: 29.7cm;
             margin: 0 auto !important;
             color: #001028;

@@ -14,12 +14,12 @@
 @stop
 
 @section('content')
-	<div class="panel panel-bordered">
-		<div class="panel-header with-border">
-			<h3 class="panel-title">All Items
+    <div class="panel panel-bordered">
+        <div class="panel-heading mb-10">
+            <h3 class="panel-title with-border">All Items
 			</h3>
 		</div>
-			<table class="nowrap table table-hover table-striped table-condensed" id="items">
+			<table class="nowrap dt-responsive table table-hover table-striped" id="items">
 				<thead>
 				<tr>
 					<th>ID</th>
@@ -51,24 +51,38 @@
 				@endforeach
 				</tbody>
 			</table>
+
+        <div class="panel-footer mt-40">
+            {{ $items->links() }}
+        </div>
 	</div>
 
 @endsection
 
-@section('styles')
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css">
+@section('css')
+	{{ Html::style('https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/css/dataTables.bootstrap4.min.css') }}
+	{{ Html::style('https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap4.min.css') }}
+	{{ Html::style('https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/css/jquery.dataTables.min.css') }}
+	<style>
+		table.dataTable thead th, table.dataTable thead td,  table.dataTable td {
+			padding: 10px 18px;
+			border-bottom: 0px solid #e0e0e0;
+		}
+		table.dataTable thead .sorting:before, table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorting_desc_disabled:before,
+		table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:after
+		{content:''}
+	</style>
 @stop
 
-@section('javascript')
-    {{ Html::script('https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js') }}
-    {{ Html::script('https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js') }}
+@section('js')
+	{{ Html::script('https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/jquery.dataTables.min.js') }}
+	{{ Html::script('https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/dataTables.bootstrap4.min.js') }}
 
-    {{ Html::script('https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js') }}
-    {{ Html::script('https://cdn.datatables.net/responsive/2.1.1/js/responsive.bootstrap.min.js') }}
+	{{ Html::script('https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js') }}
+	{{ Html::script('https://cdn.datatables.net/responsive/2.1.1/js/responsive.bootstrap4.min.js') }}
     <script>
         $(document).ready(function() {
-            $('#items').DataTable({responsive: true});
+            $('#items').DataTable({responsive: true, paging: false});
         } );
     </script>
 @stop

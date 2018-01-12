@@ -118,13 +118,13 @@
                         </span>
                 @endif
             </div>
-            <div class="form-group clearfix">
-                <div class="checkbox-custom checkbox-inline checkbox-primary float-left">
-                    <input type="checkbox" id="inputCheckbox" name="term">
-                    <label for="inputCheckbox"></label>
-                </div>
-                <p class="ml-35">By clicking Sign Up, you agree to our <a href="#">Terms</a>.</p>
-            </div>
+            {{--<div class="form-group clearfix">--}}
+                {{--<div class="checkbox-custom checkbox-inline checkbox-primary float-left">--}}
+                    {{--<input type="checkbox" id="inputCheckbox" name="term">--}}
+                    {{--<label for="inputCheckbox"></label>--}}
+                {{--</div>--}}
+                {{--<p class="ml-35">By clicking Sign Up, you agree to our <a href="#">Terms</a>.</p>--}}
+            {{--</div>--}}
             <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
         </form>
         <p>Have account already? Please go to <a href="{{ url('login') }}"  class="animsition-link">Log In</a></p>

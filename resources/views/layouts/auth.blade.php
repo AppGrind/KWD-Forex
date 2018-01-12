@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description" content="bootstrap admin template">
+    <meta name="description" content="KWD Forex group offers beginners and advanced financial markets techniques. We mainly focus on swing trading which is the most effective and sustainable way of trading the currency market and also do intraday. KWDForex mentors will engage with clients every Sunday to share the upcoming weeks analysis and our mentors trade in line with the students to instill self belief.">
     <meta name="author" content="">
     <title>@yield('title') | {{ config('app.name') }}</title>
 
-    <link rel="apple-touch-icon" href="{{ asset('backend/assets/images/apple-touch-icon.png') }}">
-    <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/logo/KWD-FOREX-apple.png') }}">
+    <link rel="shortcut icon" href="{{ url('images/logo/KWD-FOREX.ico') }}">
     <!-- Stylesheets -->
     {!! Html::style("backend/global/css/bootstrap.min.css") !!}
     {!! Html::style("backend/global/css/bootstrap-extend.min.css") !!}
@@ -58,7 +58,7 @@
     <div class="page-content">
         <div class="page-brand-info">
             <div class="brand">
-                <img class="brand-img" src="{{ asset('images/logo/KWD-FOREX-LOGO.svg') }}" alt="...">
+                <img class="brand-img" src="{{ asset('images/logo/KWD-FOREX-LOGO.svg') }}" alt="KWD Forex">
             </div>
             <h2 class="brand-text ml-80 font-size-40">Rise Above the Horizon</h2>
         </div>
