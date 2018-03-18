@@ -27,6 +27,7 @@
 						<thead>
 						<tr>
 							<th>ID</th>
+							<th>User</th>
 							<th>Amount</th>
 							<th>Status</th>
 							<th>Created</th>
@@ -37,6 +38,7 @@
 						@foreach($invoices as $invoice)
 							<tr>
 								<td class='hidden-350'>{{ $invoice->id }}</td>
+								<td><a href="{{ route('users.show', $invoice->user->id) }}" target="_blank">{{ $invoice->user->fullname }}</a></td>
 								<td>R{{ $invoice->amount }}</td>
 								<td>{{ $invoice->status_is }}</td>
 								<td>{{ $invoice->created_at->toFormattedDateString() }}</td>

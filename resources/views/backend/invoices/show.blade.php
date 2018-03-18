@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <h3>
-                        {{ Html::image('images/logo/KWD-FOREX-LOGO-black.png', '', [ 'style'=>'width: 200px;']) }}</h3>
+                        <img src="{{ asset('images/logo/KWD-FOREX-LOGO-black.png') }}" width="200px"></h3>
                         @include('partials.company_details')
                 </div>
                 <div class="col-lg-3 offset-lg-6 text-right">

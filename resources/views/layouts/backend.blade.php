@@ -80,7 +80,7 @@
 <!-- Footer -->
 <footer class="site-footer">
     <div class="site-footer-legal">© {{ \Carbon\Carbon::now()->year }} <a
-                href="{{ url('/') }}">KWD Forex</a></div>
+                href="{{ url('/') }}">{{ config('app.name') }}</a></div>
     <div class="site-footer-right">
         All RIGHT RESERVED.
     </div>

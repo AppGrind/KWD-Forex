@@ -399,6 +399,13 @@ h6 { font-weight: 300 }
 .sidr-open .wrap .box { width: 40% }
 .sidr-open #main-nav { left: 274px }
 
+.sidr .menu-footer {
+    margin: 15px 0;
+    border-top: 1px solid rgba(255, 255, 255, .2);
+    padding: 15px 0;
+}
+
+
 /*navigation bullets*/
 
 #fp-nav {

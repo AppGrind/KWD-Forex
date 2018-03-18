@@ -41,13 +41,14 @@
             <!-- End Navbar Toolbar -->
             <!-- Navbar Toolbar Right -->
             <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
+                @auth
                 <li class="nav-item dropdown">
                     <a class="nav-link navbar-avatar" data-toggle="dropdown" href="#" aria-expanded="false"
                        data-animation="scale-up" role="button">
-  <span class="avatar avatar-online">
-    <img src="{{ Avatar::create(Auth::user()->firstname)->toBase64() }}" alt="...">
-    <i></i>
-  </span>
+                          <span class="avatar avatar-online">
+                            <img src="{{ Avatar::create(Auth::user()->firstname)->toBase64() }}" alt="...">
+                            <i></i>
+                          </span>
                     </a>
                     <div class="dropdown-menu" role="menu">
                         <a class="dropdown-item" href="{{ url('users/'. Auth::id()) }}" role="menuitem"><i class="icon md-account"
@@ -112,6 +113,13 @@
                         </div>
                     </div>
                 </li>
+                @endauth
+
+                @guest
+                    <li class="nav-item">
+                        <a href="{{ route('login') }}" class="nav-link"><i class="icon md-lock-outline mr-5"></i> Login</a>
+                    </li>
+                 @endguest
             </ul>
             <!-- End Navbar Toolbar Right -->
         </div>

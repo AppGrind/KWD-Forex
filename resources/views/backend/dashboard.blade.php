@@ -11,7 +11,7 @@
 
 
 @section('content')
-    <div class="row" data-plugin="matchHeight" data-by-row="true">
+    <div class="row list-of-events" data-plugin="matchHeight" data-by-row="true">
         @foreach($events as $event)
         <div class="col-sm-12 col-md-6 col-lg-4">
             <div class="panel">
@@ -24,9 +24,9 @@
                     <h3 class="panel-title">{{ $event->name }}</h3>
 
                     <div class="panel-actions panel-actions-keep">
-                        <div class="dropdown">
+                        <div class="dropdown ">
                             <a class="panel-action" data-toggle="dropdown" href="#" aria-expanded="false"><i class="icon md-info-outline" aria-hidden="true"></i></a>
-                            <div class="dropdown-menu dropdown-menu-bullet" role="menu">
+                            <div class="dropdown-menu dropdown-menu-bullet dropdown-menu-right" role="menu">
                                 <a class="dropdown-item" href="{{ route('events.show', $event->id) }}" role="menuitem"><i class="icon md-eye" aria-hidden="true"></i> View Details</a>
                                 @if(Gate::allows('admin'))
                                 <a class="dropdown-item" href="{{ route('guest.add', $event->id) }}" role="menuitem"><i class="icon md-account-add" aria-hidden="true"></i> Add Guest</a>
@@ -52,7 +52,7 @@
                                 <div class="counter-number-group">
                                 <span class="counter-number">
                                     @if($event->number_of_seats - $event->bookings->count() > 0)
-                                        {{ $event->number_of_seats - $event->bookings->count() }}
+                                        {{ $event->number_of_seats - $event->bookings->where('status_is', 'Approved')->count() }}
                                     @else
                                         0
                                     @endif
@@ -65,8 +65,8 @@
                     <div class="row mt-2 pb-2">
                         <div class="col-sm-12">
                             <div class="progress progress-xs mb-10">
-                                <div class="progress-bar progress-bar-info bg-blue-600" aria-valuenow="{{ ($event->number_of_seats - $event->bookings->count())*10 }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ ($event->number_of_seats - $event->bookings->count())*10 }}%" role="progressbar">
-                                    <span class="sr-only">{{ ($event->number_of_seats - $event->bookings->count())*10 }}%</span>
+                                <div class="progress-bar progress-bar-info bg-blue-600" aria-valuenow="{{ ((max($event->number_of_seats - $event->bookings->where('status_is', 'Approved')->count(), 0)) / $event->number_of_seats)*100 }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ ((max($event->number_of_seats - $event->bookings->where('status_is', 'Approved')->count(), 0)) / $event->number_of_seats)*100 }}%" role="progressbar">
+                                    <span class="sr-only">{{ ((max($event->number_of_seats - $event->bookings->where('status_is', 'Approved')->count(), 0)) / $event->number_of_seats)*100 }}%</span>
                                 </div>
                             </div>
                         </div>

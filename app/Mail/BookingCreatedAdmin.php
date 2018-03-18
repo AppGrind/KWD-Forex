@@ -9,19 +9,19 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class BookingAttachmentUploadedAdminEmail extends Mailable
+class BookingCreatedAdmin extends Mailable
 {
     use Queueable, SerializesModels;
-    public $booking;
+    public $booking, $user;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Booking $booking)
+    public function __construct(Booking $booking, User $user)
     {
-        //
         $this->booking = $booking;
+        $this->user = $user;
     }
 
     /**
@@ -31,6 +31,6 @@ class BookingAttachmentUploadedAdminEmail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.admin.booking.upload');
+        return $this->markdown('emails.admin.booking.created');
     }
 }

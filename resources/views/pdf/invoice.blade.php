@@ -3,37 +3,42 @@
 @section('content')
         <div class="panel">
             <div class="panel-body container-fluid">
-                <div class="row">
-                    <div class="col-lg-3">
-                        <h3 id="logo">
-                            {{ Html::image('images/logo/KWD-FOREX-LOGO-black.png', '') }}</h3>
-                            @include('partials.company_details')
-                    </div>
-                    <div class="col-lg-3 offset-lg-6 text-right">
-                        <h4>Invoice Info</h4>
-                        <p>
-                            <a class="font-size-20" href="javascript:void(0)">#{{ $invoice->id }}</a>
-                            <br> To:
-                            <br>
-                            <span class="font-size-20">{{ $invoice->user->fullname }}</span>
-                        </p>
-                        <address>
-                            {{ $invoice->user->address }}
-                            <br>
-                            {{ $invoice->user->town }}
-                            <br>
-                            {{ $invoice->user->province }},
-                            {{ $invoice->postalcode }}
-                            <br>
-                            <abbr title="Phone">P:</abbr>&nbsp;&nbsp;
-                            {{ $invoice->user->contactnumber }}
-                            <br>
-                        </address>
-                        <span>Invoice Date: {{ $invoice->created_at->toFormattedDateString() }}</span>
-                        <br>
-                        <span>Invoice Status: {{ $invoice->status_is }}</span>
-                    </div>
-                </div>
+                <table>
+                    <tr>
+                        <td>
+                            <div>
+                                <h3 id="logo">
+                                    <img src="{{ asset('images/logo/KWD-FOREX-LOGO-black.png') }}" width="200px"></h3>
+                                @include('partials.company_details')
+                            </div>
+                        </td>
+                        <td align="right">
+                            <div class="text-right">
+                                <h4>Invoice Info</h4>
+                                <p>
+                                    <a class="font-size-20" href="javascript:void(0)">#{{ $invoice->id }}</a>
+                                    <br> To:
+                                    <br>
+                                    <span class="font-size-20">{{ $invoice->user->fullname }}</span>
+                                </p>
+                                <address>
+                                    {{ $invoice->user->address }}
+                                    <br>
+                                    {{ $invoice->user->town }}
+                                    <br>
+                                    {{ $invoice->user->province }},
+                                    {{ $invoice->postalcode }}
+                                    <br>
+                                    <abbr title="Phone">P:</abbr>&nbsp;&nbsp;
+                                    {{ $invoice->user->contactnumber }}
+                                    <br>
+                                </address>
+                                <span>Invoice Date: {{ $invoice->created_at->toFormattedDateString() }}</span>
+                                <br>
+                                <span>Invoice Status: {{ $invoice->status_is }}</span>
+                            </div></td>
+                    </tr>
+                </table>
                 <div class="page-invoice-table table-responsive">
                     <table class="table table-hover text-right">
                         <thead>

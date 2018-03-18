@@ -67,10 +67,18 @@
                             <span class="site-menu-title">Invoices</span>
                         </a>
                     </li>
+                    {{--<li class="site-menu-item hidden-sm-down site-tour-trigger is-shown">--}}
+                        {{--<a href="javascript:void(0)">--}}
+                            {{--<i class="site-menu-icon md-compass" aria-hidden="true"></i>--}}
+
+                            {{--<span class="site-menu-title">Tour</span>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
                 </ul>
             </div>
         </div>
     </div>
+    @auth
     <div class="site-menubar-footer">
         {{--<a href="javascript: void(0);" class="fold-show" data-placement="top" data-toggle="tooltip"--}}
            {{--data-original-title="Settings">--}}
@@ -85,6 +93,7 @@
             <span class="icon md-power" aria-hidden="true"></span>
         </a>
     </div>
+    @endauth
 </div>
 {{--<div class="site-gridmenu">--}}
     {{--<div>--}}

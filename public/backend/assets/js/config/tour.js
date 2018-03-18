@@ -17,6 +17,10 @@
       element: "#toggleChat",
       position: 'left',
       intro: "Quick Conversations <p class='content'>This is a sidebar dialog box for user conversations list, you can even create a quick conversation with other users</p>"
+    }, {
+      element: ".list-of-events",
+      position: 'top',
+      intro: "Upcoming Events<p class='content'>Here you'll find a list of all Open Upcoming Events. Go ahead, book one to join us on our next session.</p>"
     }],
     skipLabel: "<i class='md-close'></i>",
     doneLabel: "<i class='md-close'></i>",

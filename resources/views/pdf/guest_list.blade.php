@@ -17,6 +17,7 @@
         <table class="striped condensed">
             <thead>
                 <tr>
+                    <th>Reference/th>
                     <th>Full Name</th>
                     <th>Email</th>
                     <th>Contact No.</th>
@@ -27,6 +28,7 @@
             <tbody>
                 @foreach($event->bookings as $booking)
                     <tr>
+                        <td>{{ $booking->reference }}</td>
                         <td>{{ $booking->user->fullname }}</td>
                         <td>{{ $booking->user->email }}</td>
                         <td>{{ $booking->user->contactnumber }}</td>

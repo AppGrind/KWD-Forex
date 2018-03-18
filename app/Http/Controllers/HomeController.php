@@ -20,7 +20,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth'], ['except'=>'get_in_touch']);
+        $this->middleware(['auth'], ['except'=>['get_in_touch', 'index']]);
     }
 
     /**
@@ -30,12 +30,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-        if(!Auth::user()->is_verified){
-            return view('auth.verification');
+        if(Auth::check()){
+            if(!Auth::user()->is_verified){
+                return view('auth.verification');
+            }
         }
+
         $events = Cache::get('events', function(){
-            return Event::whereNotIn('status_is', ['Pending'])->orderBy('created_at','desc')->get();
+            return Event::whereNotIn('status_is', ['Pending', 'Closed'])->orderBy('start_date','desc')->get();
         });
         return view('backend.dashboard', compact('events'));
     }

@@ -942,6 +942,22 @@ body.site-gridmenu-active {
           transform: translateY(-50%);
 }
 
+
+@media (max-width: 991px) {
+    .page-header-actions {
+      position: relative;
+      top: 30px;
+      right: 5px;
+      margin: auto;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+  .panel-title.with-border > small{
+    display: block;
+  }
+}
 .page-header-actions .btn-icon {
   margin-left: 6px;
 }

@@ -14,11 +14,12 @@ Your booking was successful. The next step is to make a payment of **R{{ $bookin
     <li><strong>Event Dates:</strong> <em>From: </em>{{ $booking->event->start_date->toFormattedDateString() }}, <em>To: </em>{{ $booking->event->end_date->toFormattedDateString() }}</li>
 </ul>
 ##Banking Details
-
 <ul>
-    <li><strong>Bank:</strong></li>
-    <li><strong>Account #:</strong></li>
-    <li><strong>Branch Code:</strong></li>
+    <li><strong>Name:</strong> KWDForex (PTY) LTD</li>
+    <li><strong>Bank:</strong> First National Bank</li>
+    <li><strong>Account #:</strong> 62742668231</li>
+    <li><strong>Branch Code:</strong> 250655</li>
+    <li><strong>Type:</strong> Business Cheque</li>
     <li><strong>Reference:</strong> {{ $booking->reference }} </li>
     <li><strong>Amount:</strong> R{{ $booking->event->item->price }} </li>
 </ul>

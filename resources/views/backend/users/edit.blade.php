@@ -35,6 +35,7 @@
 	{!! Html::script("backend/global/vendor/typeahead-js/bloodhound.min.js") !!}
 	{!! Html::script("backend/global/vendor/typeahead-js/typeahead.jquery.min.js") !!}
 	{!! Html::script("backend/assets/js/typeahead-init.js") !!}
+
 @stop
 @section('css')
 	{!! Html::style("backend/global/vendor/typeahead-js/typeahead.css") !!}

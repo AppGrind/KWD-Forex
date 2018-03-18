@@ -1,7 +1,7 @@
 @component('mail::message')
 # An attachment was uploaded
 
-<p>Hi {{ $admin->fullname }}</p>
+<p>Hi there</p>
 <p>Please download attachment below uploaded by {{ $booking->user->fullname }} ({{ $booking->user->email }}) as proof of payment for booking <a href="{{ route('bookings.show', $booking->id) }}">#{{ $booking->reference }}</a>.</p>
 
 ## What's next?

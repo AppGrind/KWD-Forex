@@ -2,6 +2,7 @@
 <table class="table table-hover nowrap dt-responsive table-striped" id="bookings">
     <thead>
     <tr>
+        <th>Reference</th>
         <th>Full Name</th>
         <th>Email</th>
         <th>Contact No.</th>
@@ -14,7 +15,8 @@
     <tbody>
     @foreach($bookings as $booking)
         <tr id="booking-row-{{$booking->id}}">
-            <td>{{ $booking->user->firstname }} {{ $booking->user->lastname }}</td>
+            <td><a href="{{ route('bookings.show', $booking->id) }}">{{ $booking->reference }}</a></td>
+            <td>{{ $booking->user->fullname }}</td>
             <td>{{ $booking->user->email }}</td>
             <td>{{ $booking->user->contactnumber }}</td>
             <td>{{ $booking->created_at->toDayDateTimeString() }}</td>

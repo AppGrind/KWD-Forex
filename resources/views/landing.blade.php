@@ -59,6 +59,19 @@
         {{--</li>--}}
     </ul>
     <!-- END MAIN NAV LINKS -->
+    {{--<div class="menu-footer">--}}
+        {{--<ul>--}}
+            {{--<li>--}}
+                {{--<a href="{{ route('dashboard') }}"><span class="icons flaticon-little4"></span>Upcoming Events</a>--}}
+            {{--</li>--}}
+            {{--<li>--}}
+                {{--<a href="{{ route('login') }}"><span class="icons flaticon-lock11"></span>Login</a>--}}
+            {{--</li>--}}
+            {{--<li>--}}
+                {{--<a href="{{ route('register') }}"><span class="icons flaticon-pencil9"></span>Register</a>--}}
+            {{--</li>--}}
+        {{--</ul>--}}
+    {{--</div>--}}
 </div>
 <!-- END MAIN NAV -->
 

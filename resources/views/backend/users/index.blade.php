@@ -20,7 +20,7 @@
             <form class="page-search-form" role="search">
                 <div class="input-search input-search-dark">
                     <i class="input-search-icon md-search" aria-hidden="true"></i>
-                    <input type="text" class="form-control" id="inputSearch" name="search" placeholder="Search Users" disabled>
+                    <input type="text" class="form-control input-search" id="inputSearch" name="search" placeholder="Search Users">
                     <button type="button" class="input-search-close icon md-close" aria-label="Close"></button>
                 </div>
             </form>
@@ -49,9 +49,9 @@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane animation-fade active" id="all_contacts" role="tabpanel">
-                        <ul class="list-group">
+                        <ul class="list-group user-list">
                             @foreach($users as $user)
-                            <li class="list-group-item">
+                            <li class="list-group-item" data-name="{{ strtolower($user->fullname) }} {{ strtolower($user->email) }} {{ $user->contactnumber }}">
                                 <div class="media">
                                     <div class="pr-20">
                                         <div class="avatar avatar-online">
@@ -75,13 +75,16 @@
                                     </div>
                                     <div class="pl-20 pr-20 align-self-center">
                                         <input type="checkbox" class="to-labelauty verify-user" data-user-id="{{ $user->id }}" data-user-status="{{ $user->is_verified ? true : false }}" data-labelauty="Not Verified|Verified" {{ $user->is_verified ? 'checked' : '' }} />
+                                        @unless($user->hasRole('admin'))
+                                        {!! Btn::delete($user->id, url('/users'), true, $user->fullname, 'btn-block mt-5')!!}
+                                        @endunless
                                     </div>
                                 </div>
                             </li>
                             @endforeach
                         </ul>
                         <nav>
-                            <ul data-plugin="paginator" data-total="50" data-skin="pagination-no-border"></ul>
+                            {{ $users->links() }}
                         </nav>
                     </div>
                 </div>
@@ -203,5 +206,37 @@
                 });
             });
         });
+    </script>
+
+    <script>
+        (function(document, window, $) {
+            'use strict';
+
+
+            $(document).ready(function($) {
+                Site.run();
+                $('.input-search input[type=text]').on('keyup', function() {
+                    var val = $(this).val().toLowerCase();
+                    if (val !== '') {
+                        $('[data-name]').addClass('d-none');
+                        $('[data-name*=' + val + ']').removeClass('d-none');
+                    } else {
+                        $('[data-name]').removeClass('d-none');
+                    }
+
+                    $('.icon-group').each(function() {
+                        var $group = $(this);
+                        if ($group.find('[data-name]:not(.d-none)').length === 0) {
+                            $group.hide();
+                        } else {
+                            $group.show();
+                        }
+                    });
+
+                });
+
+            });
+        })(document, window, jQuery);
+
     </script>
 @stop

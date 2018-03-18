@@ -33,7 +33,7 @@
                     <p><i class="icon md-time mr-2"></i>Event Duration <strong>{{ $booking->event->start_time }}</strong> to <strong>{{ $booking->event->end_time }}</strong></p>
                     <p><i class="icon md-attachment mr-2"></i>
                         @if($booking->payment_img != null)
-                        <a href="{{ Storage::url('booking/'.$booking->img_path .'/'.$booking->payment_img) }}" class="bold btn p-0 btn-flat" id="download_link" data-toggle="tooltip" data-original-title="Proof of Payment">Download Attachment</a>
+                        <a href="{{ Storage::url('booking/'.$booking->img_path .'/'.$booking->payment_img) }}" class="bold btn p-3 btn-success" id="download_link" data-toggle="tooltip" data-original-title="Proof of Payment">Download Attachment</a>
                         @else
                             <span id="download_link">Please upload attachment</span>
                         @endif

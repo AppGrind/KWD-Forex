@@ -9,6 +9,7 @@ use App\Item;
 use App\Jobs\SendAttachmentUploadedAdminEmail;
 use App\Jobs\SendAttachmentUploadedEmail;
 use App\Jobs\SendBookingApprovedEmail;
+use App\Jobs\SendBookingCreatedAdminEmail;
 use App\Jobs\SendBookingCreatedEmail;
 use App\Jobs\SendBookingDeclinedEmail;
 use App\Jobs\SendWelcomeEmail;
@@ -38,8 +39,6 @@ class BookingController extends Controller
     public function __construct()
     {
         $this->middleware(['auth']);
-        //ToDo Add su middleware on actions
-        //ToDo Add Gates on actions
     }
 
     /**
@@ -71,6 +70,10 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
+        if(Gate::denies('admin')) {
+            flash('Unauthorized access attempt!', 'error');
+            return redirect('/dashboard');
+        }
         $user = User::findOrFail($request['user']);
         $event = Event::where('id', $request['event'])->first();
 
@@ -86,6 +89,7 @@ class BookingController extends Controller
             //Notifications
             $user->notify(new NewBookingCreated($booking, $event));
             SendBookingCreatedEmail::dispatch($user, $booking, $event);
+            SendBookingCreatedAdminEmail::dispatch($booking, $user);
 
             flash('Booking for '. $user->fullname .' was successful.', 'success');
         }else{
@@ -167,10 +171,8 @@ class BookingController extends Controller
         //Get Administrators
         $administrators = User::whereHas('role', function ($query) { $query->where('name', '=', 'admin'); })->get();
 
-        //Notify each administrator
-        foreach($administrators as $admin){
-            SendAttachmentUploadedAdminEmail::dispatch($admin, $booking);
-        }
+        //Notify info mail
+        SendAttachmentUploadedAdminEmail::dispatch($booking);
 
         return back();
     }
