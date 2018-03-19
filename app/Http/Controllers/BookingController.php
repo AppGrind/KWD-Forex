@@ -70,10 +70,6 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        if(Gate::denies('admin')) {
-            flash('Unauthorized access attempt!', 'error');
-            return redirect('/dashboard');
-        }
         $user = User::findOrFail($request['user']);
         $event = Event::where('id', $request['event'])->first();
 
