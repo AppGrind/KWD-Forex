@@ -25,6 +25,7 @@
     <!-- JQUERY -->
     {!! Html::script('/js/jquery.min.js') !!}
     {!! Html::script('//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js') !!}
+    {!! Html::style("backend/global/fonts/material-design/material-design.min.css") !!}
 </head>
 
 <body>
@@ -59,19 +60,32 @@
         {{--</li>--}}
     </ul>
     <!-- END MAIN NAV LINKS -->
-    {{--<div class="menu-footer">--}}
-        {{--<ul>--}}
-            {{--<li>--}}
-                {{--<a href="{{ route('dashboard') }}"><span class="icons flaticon-little4"></span>Upcoming Events</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a href="{{ route('login') }}"><span class="icons flaticon-lock11"></span>Login</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a href="{{ route('register') }}"><span class="icons flaticon-pencil9"></span>Register</a>--}}
-            {{--</li>--}}
-        {{--</ul>--}}
-    {{--</div>--}}
+    <div class="menu-footer">
+        <ul>
+            @guest
+            <li>
+                <a href="{{ route('dashboard') }}"><span class="icons flaticon-little4"></span>Upcoming Events</a>
+            </li>
+            <li>
+                <a href="{{ route('login') }}"><span class="icons flaticon-lock11"></span>Login</a>
+            </li>
+            <li>
+                <a href="{{ route('register') }}"><span class="icons flaticon-pencil12"></span>Register</a>
+            </li>
+            @endguest
+            @auth
+            <li>
+                <a href="{{ route('dashboard') }}"><span class="icons flaticon-little14"></span>Dashboard</a>
+            </li>
+            <li>
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" ><span class="icons flaticon-little13"></span>Logout</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+            </li>
+            @endauth
+        </ul>
+    </div>
 </div>
 <!-- END MAIN NAV -->
 
