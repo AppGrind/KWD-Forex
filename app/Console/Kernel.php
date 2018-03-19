@@ -37,7 +37,7 @@ class Kernel extends ConsoleKernel
                 }
             }
 
-        })->everyMinute(); //->dailyAt('01:00');
+        })->daily()->at('0:01')->timezone('Africa/Harare'); //->dailyAt('01:00');
     }
 
     /**
