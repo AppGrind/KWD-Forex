@@ -32,6 +32,7 @@
     {!! Html::style("backend/assets/examples/css/dashboard/v1.css") !!}
 <!-- Fonts -->
     {!! Html::style("backend/global/fonts/material-design/material-design.min.css") !!}
+    {!! Html::style("backend/global/fonts/themify/themify.min.css") !!}
     {!! Html::style("backend/assets/skins/kwd-gold.css") !!}
     {!! Html::style("backend/global/fonts/brand-icons/brand-icons.min.css") !!}
     {!! Html::style("https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css") !!}

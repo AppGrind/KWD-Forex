@@ -37,7 +37,7 @@ class HomeController extends Controller
         }
 
         $events = Cache::get('events', function(){
-            return Event::whereNotIn('status_is', ['Pending', 'Closed'])->orderBy('start_date','desc')->get();
+            return Event::orderBy('start_date','desc')->get(); //whereNotIn('status_is', ['Pending', 'Closed'])->
         });
         return view('backend.dashboard', compact('events'));
     }
